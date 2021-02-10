@@ -17,6 +17,8 @@ You can now export the animation by executing the graph. Click around to the var
 
 # Multi-context (Maya > NXT > Unreal)
 
+With the right setup, this examples provides a 1 click export from maya that opens unreal headlessly and imports the animation that was just exported.
+
 ### Setup
 1. Edit `unreal_context/unreal_context.py` and correct the unreal path and project path to your downloaded location.
 2. Take the contents `unreal_context` folder and place them in your nxt plugins directory. https://nxt-dev.github.io/extensions/#in-depth-explanations
