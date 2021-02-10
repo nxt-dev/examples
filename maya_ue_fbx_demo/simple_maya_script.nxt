@@ -1,0 +1,248 @@
+{
+    "version": "1.17",
+    "alias": "simple_nxt",
+    "color": "#0f95e8",
+    "mute": false,
+    "solo": false,
+    "meta_data": {
+        "positions": {
+            "/group_selected": [
+                200.0,
+                -60.0
+            ],
+            "/hard_edges": [
+                0.0,
+                140.0
+            ],
+            "/poly_bevel": [
+                380.0,
+                140.0
+            ],
+            "/rename_selected": [
+                -134.41626833663605,
+                -60.8894206995018
+            ],
+            "/sort_children": [
+                540.0,
+                -60.0
+            ]
+        },
+        "collapse": {
+            "/group_selected": false,
+            "/hard_edges": false,
+            "/sort_children": false
+        }
+    },
+    "nodes": {
+        "/": {
+            "code": [
+                "# Builtin",
+                "import re",
+                "",
+                "# External",
+                "import maya.cmds as mc",
+                "import pymel.core as pm",
+                "import maya.api.OpenMaya as om",
+                ""
+            ]
+        },
+        "/group_selected": {
+            "execute_in": "/rename_selected",
+            "comment": "This is an example of passing an attribute forward or down\n",
+            "attrs": {
+                "name": {
+                    "comment": "Renamed items will be put in a group, this is that group's name",
+                    "type": "raw",
+                    "value": "${/rename_selected.name}"
+                }
+            },
+            "code": [
+                "selection = mc.ls(sl=True, assemblies=True, long=True)",
+                "",
+                "mc.group(selection, name = '${name}')",
+                ""
+            ]
+        },
+        "/hard_edges": {
+            "start_point": true,
+            "comment": "More complex example of writing data to a plug\n",
+            "attrs": {
+                "edges": {
+                    "comment": "Mesh's hard edges will be put in this list",
+                    "type": "list",
+                    "value": "[]"
+                },
+                "mesh": {
+                    "comment": "Mesh name, can be blank to use selection",
+                    "type": "raw",
+                    "value": "pCube1"
+                }
+            },
+            "code": [
+                "selection = mc.filterExpand('${mesh}', sm=12, fp=True)",
+                "if selection is not None and len(selection):",
+                "    selection = selection[0]",
+                "else:",
+                "    mc.error('Select a polygon mesh')    ",
+                "",
+                "selection_list = om.MSelectionList()",
+                "selection_list.isEmpty()",
+                "selection_list.add(selection)",
+                "",
+                "dag_path = selection_list.getDagPath(0)",
+                "edge_it = om.MItMeshEdge(dag_path)",
+                "",
+                "hard_edge_info = []",
+                "while not edge_it.isDone():",
+                "    # save a list of the edge number and a bool whether it's a soft edge",
+                "    hard_edge_info.append([selection + '.e[{}]'.format( int(edge_it.index() )), edge_it.isSmooth])",
+                "    edge_it.next()",
+                "    ",
+                "# print(hard_edge_info)",
+                "",
+                "edge_numbers, edge_hardness = zip(*hard_edge_info)",
+                "edges = [e[0] for e in hard_edge_info if e[1] is False]",
+                "print(edges)",
+                "",
+                "",
+                "self.edges = edges",
+                ""
+            ]
+        },
+        "/poly_bevel": {
+            "execute_in": "/hard_edges",
+            "comment": "Example of wrapping a maya command and taking input\n",
+            "attrs": {
+                "edges": {
+                    "comment": "List of edges to bevel",
+                    "type": "raw",
+                    "value": "${/hard_edges.edges}"
+                },
+                "offset": {
+                    "comment": "Bevel offset",
+                    "type": "float",
+                    "value": ".02"
+                }
+            },
+            "code": [
+                "print(${edges})",
+                "",
+                "mc.polyBevel3(${edges}, offset=${offset})",
+                "     ",
+                "    "
+            ]
+        },
+        "/rename_selected": {
+            "start_point": true,
+            "comment": "This is a simple example of using tokens as a ui\n",
+            "attrs": {
+                "name": {
+                    "comment": "Name to rename every item too, is placed before padding",
+                    "type": "raw",
+                    "value": "mySphere"
+                },
+                "padding": {
+                    "comment": "How many 0s to pad items number with, is placed after name & before suffix",
+                    "type": "int",
+                    "value": "5"
+                },
+                "suffix": {
+                    "comment": "Suffix to add to every item in selection",
+                    "type": "raw",
+                    "value": "_grp"
+                }
+            },
+            "code": [
+                "selection = mc.ls(sl=True, long=True)",
+                "print(selection)",
+                "",
+                "for i, s in enumerate(selection):",
+                "    r = mc.rename(s, '${name}' + str(i).zfill(${padding}) + '${suffix}' )",
+                "    print(r)",
+                ""
+            ]
+        },
+        "/sort_children": {
+            "execute_in": "/group_selected",
+            "comment": "This is an example of repackaging an existing script.\nRe-sorts the items in the selection.\n",
+            "attrs": {
+                "case_sensitive": {
+                    "comment": "Does case matter in the sorting?",
+                    "type": "bool",
+                    "value": "False"
+                },
+                "entire_hierarchy": {
+                    "comment": "If true, all descendants will be sorted as well",
+                    "type": "bool",
+                    "value": "True"
+                },
+                "natural_number": {
+                    "comment": "Sorts like a human would when it comes to numbers of different lenghts",
+                    "type": "bool",
+                    "value": "True"
+                }
+            },
+            "code": [
+                "def convert_text_to_int(text):",
+                "    return int(text) if text.isdigit() else text",
+                "",
+                "def natural_keys(pynode, case_sensitive=False):",
+                "    '''",
+                "    grabbed from: https://stackoverflow.com/a/5967539",
+                "    sorts list like     [\"1\", \"2\", \"3\", \"10\", \"20\", \"30\"]",
+                "    instead of standard [\"1\", \"10\", \"2\", \"20\", \"3\", \"30\"]",
+                "    '''",
+                "    if case_sensitive:",
+                "        return [convert_text_to_int(c) for c in re.split('(\\d+)', pynode.nodeName())]",
+                "    else:",
+                "        return [convert_text_to_int(c) for c in re.split('(\\d+)', pynode.nodeName().lower())]",
+                "",
+                "",
+                "def sort_children(item=None, entire_hierarchy=True, case_sensitive=False, natural_number_sort=True):",
+                "    \"\"\"",
+                "    Gets children of item and sorts them by alphabetical order",
+                "    ",
+                "    param: entire_hierarchy, determines whether to go through all the children and childrens children",
+                "    param: case_sensitive, whether to sort the items with case or not",
+                "    \"\"\"",
+                "    item_children = item.getChildren(type=\"transform\")",
+                "    if not item_children:",
+                "        return",
+                "    ",
+                "    ",
+                "    # set \"entire_hierarchy\" to False to skip this",
+                "    if entire_hierarchy:",
+                "        for child_item in item_children:",
+                "            sort_children(item=child_item, entire_hierarchy=entire_hierarchy, case_sensitive=case_sensitive, natural_number_sort=natural_number_sort)",
+                "    ",
+                "    ",
+                "    # Sorting methods",
+                "    sort_method = None",
+                "    if natural_number_sort:",
+                "        sort_method = lambda s: (natural_keys(s, case_sensitive=case_sensitive)) # run the natural number sort with whatever case sensitivity is specified",
+                "        ",
+                "    elif case_sensitive is False:",
+                "        sort_method = lambda s: (s.nodeName().lower()) # otherwise just standard case-insensitive",
+                "        ",
+                "    item_children.sort(key=sort_method)",
+                "    ",
+                "    ",
+                "    # the actual reorder command",
+                "    for sorted_item in item_children:",
+                "        pm.reorder(sorted_item, back=True)",
+                "",
+                "",
+                "",
+                "for top_node in pm.selected():",
+                "    # print(top_node)",
+                "    sort_children(item=top_node, ",
+                "                  entire_hierarchy=${entire_hierarchy}, ",
+                "                  case_sensitive=${case_sensitive}, ",
+                "                  natural_number_sort=${natural_number})",
+                "                  ",
+                "",
+                "    "
+            ]
+        }
+    }
+}

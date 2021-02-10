@@ -1,0 +1,90 @@
+{
+    "version": "1.17",
+    "alias": "demo",
+    "color": "#51b848",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "$NXT_BUILTINS/remote_contexts.nxt",
+        "export_fbx.nxt"
+    ],
+    "comp_overrides": {
+        "export_fbx.nxt": {
+            "solo": false
+        }
+    },
+    "meta_data": {
+        "colors": {
+            "D:/nxt_webinar_demo/man/anim/export_fbx.nxt": "#00a5e6"
+        },
+        "positions": {
+            "/_remote_sub_graph": [
+                148.1054126220497,
+                418.85973814131484
+            ],
+            "/_sub_graph": [
+                -139.20740322021345,
+                421.6026507510406
+            ],
+            "/export_anim": [
+                -5.867860653958061,
+                -1.7763568394002505e-15
+            ],
+            "/report_done": [
+                325,
+                0
+            ],
+            "/start_export": [
+                -355.0055695644619,
+                -3.552713678800501e-15
+            ],
+            "/unreal_import": [
+                759.8879546875673,
+                0.0
+            ]
+        },
+        "collapse": {
+            "/unreal_import": false
+        }
+    },
+    "nodes": {
+        "/": {},
+        "/start_export/validate_saved": {
+            "enabled": true
+        },
+        "/unreal_import": {
+            "instance": "/_remote_sub_graph",
+            "execute_in": "/report_done",
+            "child_order": [
+                "finished"
+            ],
+            "comment": "A remote sub graph that launches unreal headlessly and imports our exported animation.",
+            "attrs": {
+                "_context": {
+                    "type": "raw",
+                    "value": "unreal"
+                },
+                "_graph_path": {
+                    "value": "${file::unreal_import.nxt}"
+                },
+                "import_folder": {
+                    "type": "raw",
+                    "value": "/Game/Mannequin/Animations"
+                },
+                "skel_path": {
+                    "type": "raw",
+                    "value": "/Game/Mannequin/Character/Mesh/UE4_Mannequin_Skeleton"
+                },
+                "source_file": {
+                    "type": "raw",
+                    "value": "${/report_done._output_file}"
+                }
+            }
+        },
+        "/unreal_import/finished": {
+            "code": [
+                "print('successfully imported into unreal')"
+            ]
+        }
+    }
+}

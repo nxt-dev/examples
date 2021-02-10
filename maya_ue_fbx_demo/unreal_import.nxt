@@ -1,0 +1,61 @@
+{
+    "version": "1.17",
+    "alias": "unreal_import",
+    "color": "#5b72ae",
+    "mute": false,
+    "solo": false,
+    "meta_data": {
+        "positions": {
+            "/demo_import": [
+                -56.354262267717985,
+                -14.30304786893295
+            ],
+            "/import": [
+                0,
+                0
+            ],
+            "/reimport": [
+                -198.0,
+                82.0
+            ]
+        }
+    },
+    "nodes": {
+        "/": {
+            "attrs": {
+                "import_folder": {},
+                "skel_path": {},
+                "source_file": {}
+            },
+            "code": [
+                ""
+            ]
+        },
+        "/import": {
+            "start_point": true,
+            "code": [
+                "import unreal",
+                "",
+                "options = unreal.FbxImportUI()",
+                "options.set_editor_property('import_animations', True)",
+                "options.skeleton = unreal.load_asset('${skel_path}')",
+                "options.anim_sequence_import_data.set_editor_property('import_translation', unreal.Vector(0.0, 0.0, 0.0))",
+                "options.anim_sequence_import_data.set_editor_property('import_rotation', unreal.Rotator(0.0, 0.0, 0.0))",
+                "options.anim_sequence_import_data.set_editor_property('import_uniform_scale', 1.0)",
+                "options.anim_sequence_import_data.set_editor_property('animation_length', unreal.FBXAnimationLengthImportType.FBXALIT_EXPORTED_TIME)",
+                "options.anim_sequence_import_data.set_editor_property('remove_redundant_keys', False)",
+                "",
+                "task = unreal.AssetImportTask()",
+                "task.set_editor_property('automated', True)",
+                "task.set_editor_property('destination_path', '${import_folder}')",
+                "task.set_editor_property('filename', '${source_file}')",
+                "task.set_editor_property('replace_existing', True)",
+                "task.set_editor_property('save', True)",
+                "task.set_editor_property('options', options)",
+                "",
+                "asset_tools = unreal.AssetToolsHelpers.get_asset_tools()",
+                "asset_tools.import_asset_tasks([task])"
+            ]
+        }
+    }
+}
