@@ -9,6 +9,7 @@ _The structure and content of these examples may change at any time without noti
 # Maya FBX Export
 To get the example scene and export graph open simply do the following:
 1. Open `assets/man/anim/data/base/walk/man_base_walk_anim.ma` in Maya
+   - Fix the rig reference, the rig is located at `maya_ue_fbx_demo/assets/man/rig/data/base/man_base_rig.ma`
 2. Open the NXT editor in Maya
 3. In NXT open the graph `export_fbx.nxt`
 
@@ -23,7 +24,7 @@ You can now export the animation by executing the graph. Click around to the var
 
 ### Demo
 1. Open the maya file `assets\man\anim\data\base\walk\man_base_walk_anim.ma`
-2. Open the NXT editor within maya, and open `maya_to_unreal.nxt`
+2. Open the NXT editor within Maya, and open `maya_to_unreal.nxt`
 3. Edit the animation in any way you like, there is an animation layer called `GiantHand` for quick testing.
 4. Run the `maya_to_unreal` graph from the start point `/start_export`(should be default option in build window).
 5. Open unreal to see the results!
