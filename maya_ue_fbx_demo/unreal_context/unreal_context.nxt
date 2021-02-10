@@ -1,0 +1,10 @@
+{
+    "version": "1.17",
+    "alias": "unreal_context",
+    "color": "#e83723",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "$NXT_BUILTINS/_context.nxt"
+    ]
+}

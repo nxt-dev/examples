@@ -1,12 +1,12 @@
-//Maya ASCII 2019 scene
-//Name: man_base_walk_anim_working.0002.ma
-//Last modified: Tue, Feb 02, 2021 10:50:38 AM
+//Maya ASCII 2020 scene
+//Name: man_base_walk_anim.ma
+//Last modified: Tue, Feb 09, 2021 07:05:49 PM
 //Codeset: 1252
 file -rdi 1 -ns "man_base_rig" -rfn "man_base_rigRN" -op "v=0;" -typ "mayaAscii"
-		 "maya_ue_demo/man/rig/data/base/man_base_rig.ma";
+		 "D:/nxt_webinar_demo/man/rig/data/base/man_base_rig.ma";
 file -r -ns "man_base_rig" -dr 1 -rfn "man_base_rigRN" -op "v=0;" -typ "mayaAscii"
-		 "maya_ue_demo/man/rig/data/base/man_base_rig.ma";
-requires maya "2019";
+		 "D:/nxt_webinar_demo/man/rig/data/base/man_base_rig.ma";
+requires maya "2020";
 requires -nodeType "HIKSolverNode" -nodeType "HIKRetargeterNode" -nodeType "HIKCharacterNode"
 		 -nodeType "HIKSK2State" -nodeType "HIKState2SK" -nodeType "HIKProperty2State" -dataType "HIKCharacter"
 		 -dataType "HIKCharacterState" -dataType "HIKEffectorState" -dataType "HIKPropertySetState"
@@ -14,21 +14,22 @@ requires -nodeType "HIKSolverNode" -nodeType "HIKRetargeterNode" -nodeType "HIKC
 requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
-fileInfo "product" "Maya 2019";
-fileInfo "version" "2019";
-fileInfo "cutIdentifier" "202004141915-92acaa8c08";
+fileInfo "product" "Maya 2020";
+fileInfo "version" "2020";
+fileInfo "cutIdentifier" "202002251615-329d215872";
 fileInfo "osv" "Microsoft Windows 10 Technical Preview  (Build 18363)\n";
 fileInfo "license" "education";
+fileInfo "UUID" "30504B2D-4CD3-E343-4D98-18BA96952FAF";
 createNode transform -s -n "persp";
 	rename -uid "F8E70635-4B02-496B-069A-AF93FB4D5710";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 487.8663865520856 97.884043146937671 3.9939227602648089 ;
-	setAttr ".r" -type "double3" 0.86164727038406363 91.399999999999707 0 ;
+	setAttr ".t" -type "double3" -233.85007541261601 81.371572756530981 203.48294517445231 ;
+	setAttr ".r" -type "double3" 2.6616472703868395 -51.400000000001164 -3.1862665270663134e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "AD56398A-41AD-D45F-FC6C-20BF9EEE274F";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 485.32792132525879;
+	setAttr ".coi" 313.24242156812409;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -339,19 +340,19 @@ createNode joint -n "Head" -p "Neck";
 	setAttr ".radi" 3;
 	setAttr -k on ".filmboxTypeID";
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "EE4F5AD6-4424-082F-9E4E-2B88DD1C2168";
+	rename -uid "2F11C06F-4EDE-3BFB-A925-2CBE158E60AD";
 	setAttr -s 4 ".lnk";
 	setAttr -s 4 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "64BDE45C-4B96-082E-B120-3886FCB9D67C";
+	rename -uid "B4686915-447E-66F5-FE34-E0B368589C4B";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "ABEA409D-4A7D-C83C-3E5E-DBBE33C5D40E";
+	rename -uid "2A67DEAD-459B-2162-19BE-E38E508225BA";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "AC2FBF2A-4953-F81A-5C5D-949E9B1C407D";
+	rename -uid "589BDF31-42EE-1EB8-1E01-6C8CBB18D2E8";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "23EAC640-43A2-70A0-BDB2-BD84C94B71C4";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "36098F00-4C2C-51D5-7B90-AFAC66F2B36B";
+	rename -uid "7A89539F-4DF1-A19A-68C3-D7B8CDB6D040";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "B3269A9E-43DA-26B0-FB63-19B7EDDAE1CA";
 	setAttr ".g" yes;
@@ -1887,45 +1888,45 @@ createNode script -n "uiConfigurationScriptNode";
 		"// Maya Mel UI Configuration File.\n//\n//  This script is machine generated.  Edit at your own risk.\n//\n//\n\nglobal string $gMainPane;\nif (`paneLayout -exists $gMainPane`) {\n\n\tglobal int $gUseScenePanelConfig;\n\tint    $useSceneConfig = $gUseScenePanelConfig;\n\tint    $nodeEditorPanelVisible = stringArrayContains(\"nodeEditorPanel1\", `getPanel -vis`);\n\tint    $nodeEditorWorkspaceControlOpen = (`workspaceControl -exists nodeEditorPanel1Window` && `workspaceControl -q -visible nodeEditorPanel1Window`);\n\tint    $menusOkayInPanels = `optionVar -q allowMenusInPanels`;\n\tint    $nVisPanes = `paneLayout -q -nvp $gMainPane`;\n\tint    $nPanes = 0;\n\tstring $editorName;\n\tstring $panelName;\n\tstring $itemFilterName;\n\tstring $panelConfig;\n\n\t//\n\t//  get current state of the UI\n\t//\n\tsceneUIReplacement -update $gMainPane;\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Top View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"top\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n"
 		+ "            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n"
-		+ "            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"side\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n"
-		+ "            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n"
-		+ "            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n"
-		+ "            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n"
-		+ "            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n"
-		+ "            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"side\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n"
-		+ "            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n"
-		+ "            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n"
-		+ "            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1917\n            -height 621\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n"
-		+ "            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n"
-		+ "            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n"
-		+ "            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"graphEditor\" (localizedPanelLabel(\"Graph Editor\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n"
-		+ "                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -isSet 0\n                -isSetMember 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n"
-		+ "                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                -selectionOrder \"display\" \n                -expandAttribute 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 1\n                -displayInfinities 0\n                -displayValues 0\n                -autoFit 1\n                -autoFitTime 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showResults \"off\" \n                -showBufferCurves \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n"
-		+ "                -showUpstreamCurves 1\n                -showCurveNames 0\n                -showActiveCurveNames 0\n                -clipTime \"on\" \n                -stackedCurves 0\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -displayNormalized 0\n                -preSelectionHighlight 0\n                -constrainDrag 0\n                -classicMode 1\n                -valueLinesToggle 1\n                -outliner \"graphEditor1OutlineEd\" \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n"
-		+ "                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n"
-		+ "                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n"
-		+ "                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -displayValues 0\n                -autoFit 0\n                -autoFitTime 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -showSummary 1\n                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"timeEditorPanel\" (localizedPanelLabel(\"Time Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Time Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -displayValues 0\n                -autoFit 0\n                -autoFitTime 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -displayValues 0\n                -autoFit 0\n                -autoFitTime 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n"
-		+ "                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n"
-		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif ($nodeEditorPanelVisible || $nodeEditorWorkspaceControlOpen) {\n\t\tif (\"\" == $panelName) {\n\t\t\tif ($useSceneConfig) {\n\t\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n"
-		+ "\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n"
-		+ "                -syncedSelection 1\n                -extendToShapes 1\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\t}\n\t\t} else {\n\t\t\t$label = `panel -q -label $panelName`;\n\t\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n"
-		+ "                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\tif (!$useSceneConfig) {\n\t\t\t\tpanel -e -l $label $panelName;\n\t\t\t}\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n"
-		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"componentEditorPanel\" (localizedPanelLabel(\"Component Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 0\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n"
-		+ "                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n"
-		+ "                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n"
-		+ "                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"side\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1917\\n    -height 621\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"side\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1917\\n    -height 621\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
+		+ "            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n"
+		+ "\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"side\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n"
+		+ "            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n"
+		+ "            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n"
+		+ "            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n"
+		+ "            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n"
+		+ "            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n"
+		+ "            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n"
+		+ "            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n"
+		+ "            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n"
+		+ "            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1123\n            -height 832\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n"
+		+ "            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n"
+		+ "            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n"
+		+ "            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n"
+		+ "            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"graphEditor\" (localizedPanelLabel(\"Graph Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n"
+		+ "                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n"
+		+ "                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayValues 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showPlayRangeShades \"on\" \n                -lockPlayRangeShades \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n"
+		+ "                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -preSelectionHighlight 0\n                -constrainDrag 0\n                -valueLinesToggle 1\n                -outliner \"graphEditor1OutlineEd\" \n                -highlightAffectedCurves 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n"
+		+ "                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n"
+		+ "                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayValues 0\n                -snapTime \"integer\" \n"
+		+ "                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -showSummary 1\n                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"timeEditorPanel\" (localizedPanelLabel(\"Time Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Time Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n"
+		+ "            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n"
+		+ "                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n"
+		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif ($nodeEditorPanelVisible || $nodeEditorWorkspaceControlOpen) {\n\t\tif (\"\" == $panelName) {\n\t\t\tif ($useSceneConfig) {\n\t\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n"
+		+ "                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\t}\n\t\t} else {\n\t\t\t$label = `panel -q -label $panelName`;\n\t\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n"
+		+ "                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\tif (!$useSceneConfig) {\n\t\t\t\tpanel -e -l $label $panelName;\n\t\t\t}\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"componentEditorPanel\" (localizedPanelLabel(\"Component Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 0\n"
+		+ "                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n"
+		+ "                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n"
+		+ "                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n"
+		+ "        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1123\\n    -height 832\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1123\\n    -height 832\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
@@ -3376,142 +3377,141 @@ createNode HIKSolverNode -n "HIKSolverNode1";
 	rename -uid "96CCBF93-4459-55AE-952F-C7B700E947FB";
 	setAttr ".ihi" 0;
 	setAttr ".InputStance" yes;
-	setAttr ".OutputCharacterState" -type "HIKCharacterState" ;
 createNode HIKState2SK -n "HIKState2SK1";
 	rename -uid "D81B4998-42E4-8811-70C9-A49314787491";
 	setAttr ".ihi" 0;
-	setAttr ".LeftUpLegTx" 8.6007635883304268;
-	setAttr ".LeftUpLegTy" 2.8043848132785314;
-	setAttr ".LeftUpLegTz" 1.409500558553459;
-	setAttr ".LeftUpLegRx" 7.9380429275844069;
-	setAttr ".LeftUpLegRy" -6.2955342171333628;
-	setAttr ".LeftUpLegRz" -3.6027257913757267;
-	setAttr ".LeftLegTx" -0.63273652827144744;
-	setAttr ".LeftLegTy" -43.374179860571196;
-	setAttr ".LeftLegTz" 14.253915855738995;
-	setAttr ".LeftLegRx" -17.058345355161549;
-	setAttr ".LeftLegRy" -7.4102235310192368;
-	setAttr ".LeftLegRz" 1.5139643929495574;
-	setAttr ".LeftFootTx" 1.529609096893096;
-	setAttr ".LeftFootTy" -31.083666788260203;
-	setAttr ".LeftFootTz" 37.273339810626375;
-	setAttr ".LeftFootRx" -32.079118252133135;
-	setAttr ".LeftFootRy" -3.2098760986634431;
-	setAttr ".LeftFootRz" 4.1863679503894184;
-	setAttr ".RightUpLegTx" -8.2859499165716866;
-	setAttr ".RightUpLegTy" 3.8676133258881435;
-	setAttr ".RightUpLegTz" -0.45716676316015104;
-	setAttr ".RightUpLegRx" 7.9380429275844069;
-	setAttr ".RightUpLegRy" -6.2955342171333628;
-	setAttr ".RightUpLegRz" -3.6027257913757267;
-	setAttr ".RightLegTx" -3.8442215742222117;
-	setAttr ".RightLegTy" -39.054970898849525;
-	setAttr ".RightLegTz" -21.728914792150849;
-	setAttr ".RightLegRx" 27.91363916480309;
-	setAttr ".RightLegRy" 6.025713294076545;
-	setAttr ".RightLegRz" -2.1806750956725147;
-	setAttr ".RightFootTx" -3.9606877607273434;
-	setAttr ".RightFootTy" -41.642277150313106;
-	setAttr ".RightFootTz" -35.007796743508656;
-	setAttr ".RightFootRx" 14.005825117734016;
-	setAttr ".RightFootRy" 0.27544280979297442;
-	setAttr ".RightFootRz" -2.6047253273103519;
-	setAttr ".SpineTx" 0.63751757685128041;
-	setAttr ".SpineTy" 13.323947467984112;
-	setAttr ".SpineTz" 1.8218694538052116;
-	setAttr ".SpineRx" 7.9380429275844069;
-	setAttr ".SpineRy" -6.2955342171333628;
-	setAttr ".SpineRz" -3.6027257913757267;
-	setAttr ".LeftArmTx" 14.129432080793983;
-	setAttr ".LeftArmTy" 4.9511318871125525;
-	setAttr ".LeftArmTz" -6.1592521798767663;
-	setAttr ".LeftArmRx" -6.8396743415610111;
-	setAttr ".LeftArmRy" 6.9285387182029128;
-	setAttr ".LeftArmRz" 6.8286981459692155;
-	setAttr ".LeftForeArmTx" -0.30660460216482477;
-	setAttr ".LeftForeArmTy" 33.565492032907109;
-	setAttr ".LeftForeArmTz" -3.0333461380437825;
-	setAttr ".LeftForeArmRx" 31.178900221940246;
-	setAttr ".LeftForeArmRy" 2.3173601288388959;
-	setAttr ".LeftForeArmRz" 77.809834878403549;
-	setAttr ".LeftHandTx" -29.875092285019605;
-	setAttr ".LeftHandTy" 55.520425327264881;
-	setAttr ".LeftHandTz" -4.9617816115884068;
-	setAttr ".LeftHandRx" 52.543658798505177;
-	setAttr ".LeftHandRy" 18.218853499867745;
-	setAttr ".LeftHandRz" 84.382637359469527;
-	setAttr ".RightArmTx" -9.5729178914470818;
-	setAttr ".RightArmTy" 5.2005148381103368;
-	setAttr ".RightArmTz" -4.8133164974489464;
-	setAttr ".RightArmRx" -6.6649805098038222;
-	setAttr ".RightArmRy" -2.6843685186007611;
-	setAttr ".RightArmRz" -9.7549169972635568;
-	setAttr ".RightForeArmTx" 4.8932211151021647;
-	setAttr ".RightForeArmTy" 27.970835386381289;
-	setAttr ".RightForeArmTz" -6.44821372011927;
-	setAttr ".RightForeArmRx" -9.7853365879613499;
-	setAttr ".RightForeArmRy" -2.5083136115200109;
-	setAttr ".RightForeArmRz" -88.937804145746099;
-	setAttr ".RightHandTx" 38.017318227958981;
-	setAttr ".RightHandTy" 46.351115801842624;
-	setAttr ".RightHandTz" -21.246217645641071;
-	setAttr ".RightHandRx" -5.4656460078583651;
-	setAttr ".RightHandRy" -21.123019789225769;
-	setAttr ".RightHandRz" -92.464398119569992;
-	setAttr ".HeadTx" 3.0884661549888666;
-	setAttr ".HeadTy" 11.104217778398578;
-	setAttr ".HeadTz" -6.5280375619544024;
-	setAttr ".HeadRx" -11.771381749378333;
-	setAttr ".HeadRy" -1.5687031642074929;
-	setAttr ".HeadRz" -1.414146051951519;
-	setAttr ".LeftToeBaseTx" 4.0489015634423868;
-	setAttr ".LeftToeBaseTy" 9.2478075492090461;
-	setAttr ".LeftToeBaseTz" 56.161679441139448;
-	setAttr ".LeftToeBaseRx" -21.445508987430721;
-	setAttr ".LeftToeBaseRy" 0.70448879711076706;
-	setAttr ".LeftToeBaseRz" 9.062352914269173;
-	setAttr ".RightToeBaseTx" -4.4912876137544906;
-	setAttr ".RightToeBaseTy" -1.741258087250815;
-	setAttr ".RightToeBaseTz" -21.639471132213657;
-	setAttr ".RightToeBaseRx" 21.287821784505528;
-	setAttr ".RightToeBaseRy" 0.90586080848405215;
-	setAttr ".RightToeBaseRz" -3.699903722661225;
-	setAttr ".LeftShoulderTx" 5.01446341365632;
-	setAttr ".LeftShoulderTy" 10.154805159832392;
-	setAttr ".LeftShoulderTz" -4.2072995492699246;
-	setAttr ".LeftShoulderRx" -4.153739019009798;
-	setAttr ".LeftShoulderRy" 0.31215279074844027;
-	setAttr ".LeftShoulderRz" -2.9008791977947785;
-	setAttr ".RightShoulderTx" 0.018925926484911315;
-	setAttr ".RightShoulderTy" 10.407945024680316;
-	setAttr ".RightShoulderTz" -4.180048201940723;
-	setAttr ".RightShoulderRx" -4.153739019009798;
-	setAttr ".RightShoulderRy" 0.31215279074844027;
-	setAttr ".RightShoulderRz" -2.9008791977947785;
-	setAttr ".NeckTx" 2.7853990201449657;
-	setAttr ".NeckTy" 15.625903415310972;
-	setAttr ".NeckTz" -4.5822977290830185;
-	setAttr ".NeckRx" -4.153739019009798;
-	setAttr ".NeckRy" 0.31215279074844027;
-	setAttr ".NeckRz" -2.9008791977947785;
-	setAttr ".Spine1Tx" 1.3130442504218696;
-	setAttr ".Spine1Ty" 13.357550719895102;
-	setAttr ".Spine1Tz" -0.11888550868544634;
-	setAttr ".Spine1Rx" -6.6300134821473931;
-	setAttr ".Spine1Ry" -3.8370966792262142;
-	setAttr ".Spine1Rz" -2.8354999827962071;
-	setAttr ".Spine2Tx" 1.8156398781952667;
-	setAttr ".Spine2Ty" 12.230444430952474;
-	setAttr ".Spine2Tz" -1.9121857629088517;
-	setAttr ".Spine2Rx" -9.7827546399102356;
-	setAttr ".Spine2Ry" -2.5336012186414494;
-	setAttr ".Spine2Rz" -2.7985477369933065;
-	setAttr ".Spine3Tx" 2.2495445984542366;
-	setAttr ".Spine3Ty" 11.87591820370217;
-	setAttr ".Spine3Tz" -4.1449335496738193;
-	setAttr ".Spine3Rx" -12.932300577605707;
-	setAttr ".Spine3Ry" -1.2300467055303865;
-	setAttr ".Spine3Rz" -2.8333818405128377;
+	setAttr ".LeftUpLegTx" 8.4711064823519209;
+	setAttr ".LeftUpLegTy" -1.0304112542251005;
+	setAttr ".LeftUpLegTz" -0.58694347490223109;
+	setAttr ".LeftUpLegRx" 9.1362939182403977;
+	setAttr ".LeftUpLegRy" 3.134236779067535;
+	setAttr ".LeftUpLegRz" -1.2803277307347596;
+	setAttr ".LeftLegTx" 2.9253068496005055;
+	setAttr ".LeftLegTy" -49.188165446198809;
+	setAttr ".LeftLegTz" -6.7436119668555747;
+	setAttr ".LeftLegRx" 7.3334676748211134;
+	setAttr ".LeftLegRy" 2.3567664460652979;
+	setAttr ".LeftLegRz" 3.7046777376208198;
+	setAttr ".LeftFootTx" 6.7375270614076763;
+	setAttr ".LeftFootTy" -48.670527459652092;
+	setAttr ".LeftFootTz" -1.0388440045819745;
+	setAttr ".LeftFootRx" -6.5627752840351548;
+	setAttr ".LeftFootRy" 2.7405799150525665;
+	setAttr ".LeftFootRz" 4.2605527914758907;
+	setAttr ".RightUpLegTx" -8.5219949371101578;
+	setAttr ".RightUpLegTy" -0.65062130757840464;
+	setAttr ".RightUpLegTz" 0.34378661536279864;
+	setAttr ".RightUpLegRx" 9.1362939182403977;
+	setAttr ".RightUpLegRy" 3.134236779067535;
+	setAttr ".RightUpLegRz" -1.2803277307347596;
+	setAttr ".RightLegTx" 2.5055722940105891;
+	setAttr ".RightLegTy" -46.693396558351623;
+	setAttr ".RightLegTz" -15.337108988683156;
+	setAttr ".RightLegRx" 18.839784284484601;
+	setAttr ".RightLegRy" 7.2078737706466347;
+	setAttr ".RightLegRz" 5.4627784457257365;
+	setAttr ".RightFootTx" 4.2668869444552886;
+	setAttr ".RightFootTy" -44.977589563507124;
+	setAttr ".RightFootTz" 26.766771347270495;
+	setAttr ".RightFootRx" -48.327928407405423;
+	setAttr ".RightFootRy" 8.8411159156582269;
+	setAttr ".RightFootRz" -5.7963042164518148;
+	setAttr ".SpineTx" 0.28269646933181125;
+	setAttr ".SpineTy" 9.1229665429915059;
+	setAttr ".SpineTz" 1.4387402015503525;
+	setAttr ".SpineRx" 9.1362939182403977;
+	setAttr ".SpineRy" 3.134236779067535;
+	setAttr ".SpineRz" -1.2803277307347596;
+	setAttr ".LeftArmTx" 12.396785302096482;
+	setAttr ".LeftArmTy" 1.9011414408955147;
+	setAttr ".LeftArmTz" -4.2800833716785966;
+	setAttr ".LeftArmRx" -3.2630705146475263;
+	setAttr ".LeftArmRy" 8.8360608352581309;
+	setAttr ".LeftArmRz" 11.639294732154081;
+	setAttr ".LeftForeArmTx" -1.2234304703427483;
+	setAttr ".LeftForeArmTy" 30.713946976574519;
+	setAttr ".LeftForeArmTz" -5.360106569834592;
+	setAttr ".LeftForeArmRx" 17.668664155423464;
+	setAttr ".LeftForeArmRy" 3.9108888452308355;
+	setAttr ".LeftForeArmRz" 86.027673173136577;
+	setAttr ".LeftHandTx" -29.652470869587432;
+	setAttr ".LeftHandTy" 52.771750775359955;
+	setAttr ".LeftHandTz" -18.525982126092753;
+	setAttr ".LeftHandRx" 19.546252183477193;
+	setAttr ".LeftHandRy" 17.752489973185796;
+	setAttr ".LeftHandRz" 85.549646516387654;
+	setAttr ".RightArmTx" -12.738540709548049;
+	setAttr ".RightArmTy" 0.32198131732354796;
+	setAttr ".RightArmTz" -2.2147842286418049;
+	setAttr ".RightArmRx" -3.4994419233509215;
+	setAttr ".RightArmRy" -0.86617236443207635;
+	setAttr ".RightArmRz" -4.8478322614420311;
+	setAttr ".RightForeArmTx" -5.600769288452625;
+	setAttr ".RightForeArmTy" 29.69870665708185;
+	setAttr ".RightForeArmTz" -1.9274014637388905;
+	setAttr ".RightForeArmRx" 3.3925964817088659;
+	setAttr ".RightForeArmRy" 0.44181612255297403;
+	setAttr ".RightForeArmRz" -78.188213817537445;
+	setAttr ".RightHandTx" 23.49966351676045;
+	setAttr ".RightHandTy" 49.806921862138971;
+	setAttr ".RightHandTz" -16.387748223167492;
+	setAttr ".RightHandRx" 8.3512331806704196;
+	setAttr ".RightHandRy" -20.217576003545357;
+	setAttr ".RightHandRz" -81.861071699771898;
+	setAttr ".HeadTx" -0.36692308318640077;
+	setAttr ".HeadTy" 7.489751889491032;
+	setAttr ".HeadTz" -3.2096582323414644;
+	setAttr ".HeadRx" -7.3186551127601778;
+	setAttr ".HeadRy" 1.4332196486375315;
+	setAttr ".HeadRz" 2.3097822467410762;
+	setAttr ".LeftToeBaseTx" 7.4018600027647379;
+	setAttr ".LeftToeBaseTy" -8.357264269592946;
+	setAttr ".LeftToeBaseTz" 14.39333241242433;
+	setAttr ".LeftToeBaseRx" 0.58366210311701994;
+	setAttr ".LeftToeBaseRy" 2.2043812257202453;
+	setAttr ".LeftToeBaseRz" 1.4617542222596813;
+	setAttr ".RightToeBaseTx" 9.0099599740362493;
+	setAttr ".RightToeBaseTy" 7.8307405453500394;
+	setAttr ".RightToeBaseTz" 41.651185989248617;
+	setAttr ".RightToeBaseRx" -47.395452498910508;
+	setAttr ".RightToeBaseRy" 10.443550100665938;
+	setAttr ".RightToeBaseRz" -9.7091404727426518;
+	setAttr ".LeftShoulderTx" 2.5310898287270769;
+	setAttr ".LeftShoulderTy" 6.2762802334584933;
+	setAttr ".LeftShoulderTz" -2.3288483268506952;
+	setAttr ".LeftShoulderRx" -1.4488364126544828;
+	setAttr ".LeftShoulderRy" 3.1681994996906782;
+	setAttr ".LeftShoulderRz" 1.3421492699105315;
+	setAttr ".RightShoulderTx" -2.4619161457775038;
+	setAttr ".RightShoulderTy" 6.1592980510280029;
+	setAttr ".RightShoulderTz" -2.0523999222673388;
+	setAttr ".RightShoulderRx" -1.4488364126544828;
+	setAttr ".RightShoulderRy" 3.1681994996906782;
+	setAttr ".RightShoulderRz" 1.3421492699105315;
+	setAttr ".NeckTx" -0.098540394012660126;
+	setAttr ".NeckTy" 11.579798408582263;
+	setAttr ".NeckTz" -2.3260762933852472;
+	setAttr ".NeckRx" -1.4488364126544828;
+	setAttr ".NeckRy" 3.1681994996906782;
+	setAttr ".NeckRz" 1.3421492699105315;
+	setAttr ".Spine1Tx" 0.37547479212299872;
+	setAttr ".Spine1Ty" 9.2431151114665226;
+	setAttr ".Spine1Tz" 0.9071389550755562;
+	setAttr ".Spine1Rx" -4.7440545232503872;
+	setAttr ".Spine1Ry" 3.1620626062734414;
+	setAttr ".Spine1Rz" -0.61018781305859227;
+	setAttr ".Spine2Tx" 0.33776970461743805;
+	setAttr ".Spine2Ty" 8.247688808386215;
+	setAttr ".Spine2Tz" -0.29793940384933748;
+	setAttr ".Spine2Rx" -7.6084641271196691;
+	setAttr ".Spine2Ry" 3.2160398749123322;
+	setAttr ".Spine2Rz" -0.12944398707736671;
+	setAttr ".Spine3Tx" 0.19804438313970518;
+	setAttr ".Spine3Ty" 8.0866604679807494;
+	setAttr ".Spine3Tz" -1.8958506801102004;
+	setAttr ".Spine3Rx" -10.472510194706398;
+	setAttr ".Spine3Ry" 3.2939348872061696;
+	setAttr ".Spine3Rz" 0.3480282214428444;
 createNode HIKRetargeterNode -n "HIKRetargeterNode1";
 	rename -uid "0FF025E3-477B-D86B-4913-82BF815FBE45";
 	setAttr ".ihi" 0;
@@ -3522,7 +3522,7 @@ createNode HIKSK2State -n "HIKSK2State1";
 	setAttr ".OutputCharacterState" -type "HIKCharacterState" ;
 createNode reference -n "man_base_rigRN";
 	rename -uid "F8AB3136-48E0-BC7C-090B-C295877FBA70";
-	setAttr -s 402 ".phl";
+	setAttr -s 422 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
@@ -3925,10 +3925,30 @@ createNode reference -n "man_base_rigRN";
 	setAttr ".phl[400]" 0;
 	setAttr ".phl[401]" 0;
 	setAttr ".phl[402]" 0;
+	setAttr ".phl[403]" 0;
+	setAttr ".phl[404]" 0;
+	setAttr ".phl[405]" 0;
+	setAttr ".phl[406]" 0;
+	setAttr ".phl[407]" 0;
+	setAttr ".phl[408]" 0;
+	setAttr ".phl[409]" 0;
+	setAttr ".phl[410]" 0;
+	setAttr ".phl[411]" 0;
+	setAttr ".phl[412]" 0;
+	setAttr ".phl[413]" 0;
+	setAttr ".phl[414]" 0;
+	setAttr ".phl[415]" 0;
+	setAttr ".phl[416]" 0;
+	setAttr ".phl[417]" 0;
+	setAttr ".phl[418]" 0;
+	setAttr ".phl[419]" 0;
+	setAttr ".phl[420]" 0;
+	setAttr ".phl[421]" 0;
+	setAttr ".phl[422]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"man_base_rigRN"
 		"man_base_rigRN" 0
-		"man_base_rigRN" 466
+		"man_base_rigRN" 579
 		2 "|man_base_rig:man|man_base_rig:root" "translate" " -type \"double3\" 0 0 0"
 		
 		2 "|man_base_rig:man|man_base_rig:root" "rotate" " -type \"double3\" 0 0 0"
@@ -3954,9 +3974,49 @@ createNode reference -n "man_base_rigRN";
 		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r" 
 		"drawStyle" " 0"
 		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r" 
+		"rotate" " -type \"double3\" 19.30279762724538628 3.30224665744955104 -8.14632354772819767"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r" 
+		"rotateX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r" 
+		"rotateY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r" 
+		"rotateZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r" 
 		"drawStyle" " 0"
 		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"translate" " -type \"double3\" -26.97522894536912474 2.5462738251214034e-05 -5.5601948716343941e-06"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"translateX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"translateY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"translateZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"rotate" " -type \"double3\" -67.3755078580274045 -0.48237433814743419 -1.20163469727383898"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"rotateX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"rotateY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"rotateZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"scale" " -type \"double3\" 1 1 1"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"scaleX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"scaleY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
+		"scaleZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r" 
 		"drawStyle" " 0"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:lowerarm_twist_01_r" 
+		"translate" " -type \"double3\" -14.00000014596268727 2.3810766077048129e-05 -1.0671895239511286e-05"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:lowerarm_twist_01_r" 
+		"rotate" " -type \"double3\" -13.51037464079439587 0 0"
 		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r" 
 		"drawStyle" " 0"
 		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01" 
@@ -3972,106 +4032,227 @@ createNode reference -n "man_base_rigRN";
 		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l" 
 		"drawStyle" " 0"
 		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r" 
+		"scale" " -type \"double3\" 1 1 1"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r" 
+		"scaleX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r" 
+		"scaleY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r" 
+		"scaleZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r" 
 		"drawStyle" " 0"
 		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"translate" " -type \"double3\" 42.57224455410240438 4.0670709061885191e-05 1.2675544483364831e-05"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"translateX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"translateY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"translateZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"rotate" " -type \"double3\" -2.68753746713067043 -8.43633753258591668 -69.16644124099545365"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"rotateX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"rotateY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"rotateZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"scale" " -type \"double3\" 1 1 1"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"scaleX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"scaleY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
+		"scaleZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r" 
 		"drawStyle" " 0"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:calf_twist_01_r" 
+		"scale" " -type \"double3\" 0.99999999999999956 0.99999999999999933 0.99999999999999989"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"translate" " -type \"double3\" 40.19682127421927476 1.1621323352528634e-06 -2.3074693942248814e-05"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"translateX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"translateY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"translateZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"rotate" " -type \"double3\" 2.05478237799421537 2.26062707934184459 -0.33308083978083514"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"rotateX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"rotateY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"rotateZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"scale" " -type \"double3\" 1 1 1"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"scaleX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"scaleY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
+		"scaleZ" " -av"
 		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r" 
 		"drawStyle" " 0"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r|man_base_rig:ball_r" 
+		"visibility" " 1"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r|man_base_rig:ball_r" 
+		"translate" " -type \"double3\" 10.45381641387940519 16.57779693603516336 -0.080158449709418989"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r|man_base_rig:ball_r" 
+		"rotate" " -type \"double3\" 0.0039439606482492527 0.0089543778447278358 -91.88358306884768467"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r|man_base_rig:ball_r" 
+		"scale" " -type \"double3\" 1.00000000000000044 0.99999999999999978 0.99999999999999989"
+		
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r|man_base_rig:ball_r" 
+		"scaleX" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r|man_base_rig:ball_r" 
+		"scaleY" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r|man_base_rig:ball_r" 
+		"scaleZ" " -av"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:ik_foot_root" "visibility" 
+		" 0"
+		2 "|man_base_rig:man|man_base_rig:root|man_base_rig:ik_hand_root" "visibility" 
+		" 0"
+		2 "|man_base_rig:man_base_Ctrl_Reference" "visibility" " -k 0 -cb 1 0"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_HipsEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_LeftAnkleEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_RightAnkleEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_LeftWristEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_RightWristEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_LeftKneeEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_RightKneeEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_LeftElbowEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_RightElbowEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_ChestOriginEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_ChestEndEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_LeftFootEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_LeftShoulderEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_RightShoulderEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_HeadEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_LeftHipEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_RightHipEffector" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_LeftUpLeg" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_LeftUpLeg|man_base_rig:man_base_Ctrl_LeftLeg" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_LeftUpLeg|man_base_rig:man_base_Ctrl_LeftLeg|man_base_rig:man_base_Ctrl_LeftFoot" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_LeftUpLeg|man_base_rig:man_base_Ctrl_LeftLeg|man_base_rig:man_base_Ctrl_LeftFoot|man_base_rig:man_base_Ctrl_LeftToeBase" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_RightUpLeg" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_RightUpLeg|man_base_rig:man_base_Ctrl_RightLeg" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_RightUpLeg|man_base_rig:man_base_Ctrl_RightLeg|man_base_rig:man_base_Ctrl_RightFoot" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_LeftShoulder" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_LeftShoulder|man_base_rig:man_base_Ctrl_LeftArm" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_LeftShoulder|man_base_rig:man_base_Ctrl_LeftArm|man_base_rig:man_base_Ctrl_LeftForeArm" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_LeftShoulder|man_base_rig:man_base_Ctrl_LeftArm|man_base_rig:man_base_Ctrl_LeftForeArm|man_base_rig:man_base_Ctrl_LeftHand" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_RightShoulder" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_RightShoulder|man_base_rig:man_base_Ctrl_RightArm" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_RightShoulder|man_base_rig:man_base_Ctrl_RightArm|man_base_rig:man_base_Ctrl_LeafRightArmRoll1" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_RightShoulder|man_base_rig:man_base_Ctrl_RightArm|man_base_rig:man_base_Ctrl_RightForeArm" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_RightShoulder|man_base_rig:man_base_Ctrl_RightArm|man_base_rig:man_base_Ctrl_RightForeArm|man_base_rig:man_base_Ctrl_RightHand" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_Neck" 
-		"visibility" " -k 0 -cb 1 0"
+		"visibility" " -k 0 -cb 1 1"
 		2 "|man_base_rig:man_base_Ctrl_Reference|man_base_rig:man_base_Ctrl_Hips|man_base_rig:man_base_Ctrl_Spine|man_base_rig:man_base_Ctrl_Spine1|man_base_rig:man_base_Ctrl_Spine2|man_base_rig:man_base_Ctrl_Neck|man_base_rig:man_base_Ctrl_Head" 
-		"visibility" " -k 0 -cb 1 0"
-		3 "man_base_rig:HIKState2SK1.Spine2Tx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.translateX" 
+		"visibility" " -k 0 -cb 1 1"
+		2 "man_base_rig:HIKState2SK1" "RightFootTx" " 40.19682127421927476"
+		2 "man_base_rig:HIKState2SK1" "RightFootTy" " 1.1621323352528634e-06"
+		2 "man_base_rig:HIKState2SK1" "RightFootTz" " -2.3074693942248814e-05"
+		2 "man_base_rig:HIKState2SK1" "RightFootRx" " 2.05478237799421537"
+		2 "man_base_rig:HIKState2SK1" "RightFootRy" " 2.26062707934184459"
+		2 "man_base_rig:HIKState2SK1" "RightFootRz" " -0.33308083978083514"
+		2 "man_base_rig:HIKState2SK1" "RightFootSx" " 1"
+		2 "man_base_rig:HIKState2SK1" "RightFootSy" " 1"
+		2 "man_base_rig:HIKState2SK1" "RightFootSz" " 1"
+		2 "man_base_rig:HIKState2SK1" "RightHandTx" " -26.97522894536912474"
+		2 "man_base_rig:HIKState2SK1" "RightHandTy" " 2.5462738251214034e-05"
+		2 "man_base_rig:HIKState2SK1" "RightHandTz" " -5.5601948716343941e-06"
+		2 "man_base_rig:HIKState2SK1" "RightHandRx" " -67.3755078580274045"
+		2 "man_base_rig:HIKState2SK1" "RightHandRy" " -0.48237433814743419"
+		2 "man_base_rig:HIKState2SK1" "RightHandRz" " -1.20163469727383898"
+		2 "man_base_rig:HIKState2SK1" "RightHandSx" " 1"
+		2 "man_base_rig:HIKState2SK1" "RightHandSy" " 1"
+		2 "man_base_rig:HIKState2SK1" "RightHandSz" " 1"
+		3 "man_base_rig:HIKState2SK1.SpineTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.translateX" 
 		""
-		3 "man_base_rig:HIKState2SK1.Spine2Ty" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.translateY" 
+		3 "man_base_rig:HIKState2SK1.SpineTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.translateY" 
 		""
-		3 "man_base_rig:HIKState2SK1.Spine2Tz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.translateZ" 
+		3 "man_base_rig:HIKState2SK1.SpineTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.translateZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.Spine2Rx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.rotateX" 
+		3 "man_base_rig:HIKState2SK1.SpineRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.rotateX" 
 		""
-		3 "man_base_rig:HIKState2SK1.Spine2Ry" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.rotateY" 
+		3 "man_base_rig:HIKState2SK1.SpineRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.rotateY" 
 		""
-		3 "man_base_rig:HIKState2SK1.Spine2Rz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.rotateZ" 
+		3 "man_base_rig:HIKState2SK1.SpineRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.rotateZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.Spine2Sx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.scaleX" 
+		3 "man_base_rig:HIKState2SK1.SpineSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.scaleX" 
 		""
-		3 "man_base_rig:HIKState2SK1.Spine2Sy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.scaleY" 
+		3 "man_base_rig:HIKState2SK1.SpineSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.scaleY" 
 		""
-		3 "man_base_rig:HIKState2SK1.Spine2Sz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.scaleZ" 
+		3 "man_base_rig:HIKState2SK1.SpineSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftToeBaseTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftToeBaseTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftToeBaseTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftToeBaseRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftToeBaseRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftToeBaseRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftToeBaseSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftToeBaseSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftToeBaseSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.scaleZ" 
 		""
 		3 "man_base_rig:HIKState2SK1.RightLegTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.translateX" 
 		""
@@ -4091,6 +4272,8 @@ createNode reference -n "man_base_rigRN";
 		""
 		3 "man_base_rig:HIKState2SK1.RightLegSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.scaleZ" 
 		""
+		3 "man_base_rig:HIKSolverNode1.OutputCharacterState" "man_base_rig:HIKState2SK1.InputCharacterState" 
+		""
 		3 "man_base_rig:HIKState2SK1.LeftLegTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.translateX" 
 		""
 		3 "man_base_rig:HIKState2SK1.LeftLegTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.translateY" 
@@ -4108,134 +4291,6 @@ createNode reference -n "man_base_rigRN";
 		3 "man_base_rig:HIKState2SK1.LeftLegSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.scaleY" 
 		""
 		3 "man_base_rig:HIKState2SK1.LeftLegSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightForeArmTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightForeArmTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightForeArmTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightForeArmRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightForeArmRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightForeArmRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightForeArmSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightForeArmSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightForeArmSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftHandTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftHandTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftHandTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftHandRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftHandRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftHandRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftHandSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftHandSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftHandSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.HipsTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.HipsTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.HipsTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.HipsRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.HipsRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.HipsRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.HipsSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.HipsSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.HipsSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftArmTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftArmTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftArmTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftArmRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftArmRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftArmRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftArmSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftArmSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftArmSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightArmTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightArmTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightArmTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightArmRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightArmRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightArmRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightArmSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightArmSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightArmSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.SpineTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.SpineTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.SpineTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.SpineRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.SpineRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.SpineRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.SpineSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.SpineSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.SpineSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightShoulderTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightShoulderTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightShoulderTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightShoulderRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightShoulderRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightShoulderRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightShoulderSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightShoulderSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightShoulderSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.scaleZ" 
-		""
-		3 "man_base_rig:HIKSolverNode1.OutputCharacterState" "man_base_rig:HIKState2SK1.InputCharacterState" 
 		""
 		3 "man_base_rig:HIKState2SK1.RightUpLegTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.translateX" 
 		""
@@ -4255,23 +4310,131 @@ createNode reference -n "man_base_rigRN";
 		""
 		3 "man_base_rig:HIKState2SK1.RightUpLegSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.scaleZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeftForeArmTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.translateX" 
+		3 "man_base_rig:HIKState2SK1.RightShoulderTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.translateX" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeftForeArmTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.translateY" 
+		3 "man_base_rig:HIKState2SK1.RightShoulderTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.translateY" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeftForeArmTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.translateZ" 
+		3 "man_base_rig:HIKState2SK1.RightShoulderTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.translateZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeftForeArmRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.rotateX" 
+		3 "man_base_rig:HIKState2SK1.RightShoulderRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.rotateX" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeftForeArmRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.rotateY" 
+		3 "man_base_rig:HIKState2SK1.RightShoulderRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.rotateY" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeftForeArmRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.rotateZ" 
+		3 "man_base_rig:HIKState2SK1.RightShoulderRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.rotateZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeftForeArmSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.scaleX" 
+		3 "man_base_rig:HIKState2SK1.RightShoulderSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.scaleX" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeftForeArmSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.scaleY" 
+		3 "man_base_rig:HIKState2SK1.RightShoulderSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.scaleY" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeftForeArmSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.scaleZ" 
+		3 "man_base_rig:HIKState2SK1.RightShoulderSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightFootTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightFootTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightFootTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightFootRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightFootRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightFootRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightFootSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightFootSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightFootSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Tx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Ty" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Tz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Rx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Ry" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Rz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Sx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Sy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Sz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightHandTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightHandTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightHandTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightHandRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightHandRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightHandRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightHandSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightHandSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightHandSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftHandTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftHandTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftHandTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftHandRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftHandRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftHandRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftHandSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftHandSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftHandSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l|man_base_rig:hand_l.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightArmTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightArmTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightArmTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightArmRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightArmRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightArmRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightArmSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightArmSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightArmSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.HeadTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.HeadTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.HeadTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.HeadRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.HeadRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.HeadRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.HeadSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.HeadSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.HeadSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.scaleZ" 
 		""
 		3 "man_base_rig:HIKState2SK1.NeckTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.translateX" 
 		""
@@ -4309,6 +4472,60 @@ createNode reference -n "man_base_rigRN";
 		""
 		3 "man_base_rig:HIKState2SK1.LeftUpLegSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.scaleZ" 
 		""
+		3 "man_base_rig:HIKState2SK1.HipsTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.HipsTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.HipsTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.HipsRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.HipsRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.HipsRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.HipsSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.HipsSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.HipsSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightForeArmTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightForeArmTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightForeArmTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightForeArmRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightForeArmRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightForeArmRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightForeArmSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightForeArmSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.RightForeArmSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftForeArmTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftForeArmTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftForeArmTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftForeArmRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftForeArmRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftForeArmRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftForeArmSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftForeArmSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.LeftForeArmSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l|man_base_rig:lowerarm_l.scaleZ" 
+		""
 		3 "man_base_rig:HIKState2SK1.LeftShoulderTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l.translateX" 
 		""
 		3 "man_base_rig:HIKState2SK1.LeftShoulderTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l.translateY" 
@@ -4326,78 +4543,6 @@ createNode reference -n "man_base_rigRN";
 		3 "man_base_rig:HIKState2SK1.LeftShoulderSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l.scaleY" 
 		""
 		3 "man_base_rig:HIKState2SK1.LeftShoulderSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightHandTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightHandTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightHandTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightHandRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightHandRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightHandRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightHandSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightHandSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.RightHandSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.Spine1Tx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.Spine1Ty" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.Spine1Tz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.Spine1Rx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.Spine1Ry" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.Spine1Rz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.Spine1Sx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.Spine1Sy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.Spine1Sz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.HeadTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.HeadTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.HeadTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.HeadRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.HeadRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.HeadRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.HeadSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.HeadSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.HeadSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.scaleZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftToeBaseTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.translateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftToeBaseTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.translateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftToeBaseTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.translateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftToeBaseRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.rotateX" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftToeBaseRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.rotateY" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftToeBaseRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.rotateZ" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftToeBaseSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.scaleX" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftToeBaseSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.scaleY" 
-		""
-		3 "man_base_rig:HIKState2SK1.LeftToeBaseSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.scaleZ" 
 		""
 		3 "man_base_rig:HIKState2SK1.LeftFootTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.translateX" 
 		""
@@ -4417,41 +4562,59 @@ createNode reference -n "man_base_rigRN";
 		""
 		3 "man_base_rig:HIKState2SK1.LeftFootSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.scaleZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Tx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.translateX" 
+		3 "man_base_rig:HIKState2SK1.Spine2Tx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.translateX" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Ty" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.translateY" 
+		3 "man_base_rig:HIKState2SK1.Spine2Ty" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.translateY" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Tz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.translateZ" 
+		3 "man_base_rig:HIKState2SK1.Spine2Tz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.translateZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Rx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.rotateX" 
+		3 "man_base_rig:HIKState2SK1.Spine2Rx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.rotateX" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Ry" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.rotateY" 
+		3 "man_base_rig:HIKState2SK1.Spine2Ry" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.rotateY" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Rz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.rotateZ" 
+		3 "man_base_rig:HIKState2SK1.Spine2Rz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.rotateZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Sx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.scaleX" 
+		3 "man_base_rig:HIKState2SK1.Spine2Sx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.scaleX" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Sy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.scaleY" 
+		3 "man_base_rig:HIKState2SK1.Spine2Sy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.scaleY" 
 		""
-		3 "man_base_rig:HIKState2SK1.LeafRightArmRoll1Sz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.scaleZ" 
+		3 "man_base_rig:HIKState2SK1.Spine2Sz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03.scaleZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.RightFootTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateX" 
+		3 "man_base_rig:HIKState2SK1.LeftArmTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.translateX" 
 		""
-		3 "man_base_rig:HIKState2SK1.RightFootTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateY" 
+		3 "man_base_rig:HIKState2SK1.LeftArmTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.translateY" 
 		""
-		3 "man_base_rig:HIKState2SK1.RightFootTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateZ" 
+		3 "man_base_rig:HIKState2SK1.LeftArmTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.translateZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.RightFootRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateX" 
+		3 "man_base_rig:HIKState2SK1.LeftArmRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.rotateX" 
 		""
-		3 "man_base_rig:HIKState2SK1.RightFootRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateY" 
+		3 "man_base_rig:HIKState2SK1.LeftArmRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.rotateY" 
 		""
-		3 "man_base_rig:HIKState2SK1.RightFootRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateZ" 
+		3 "man_base_rig:HIKState2SK1.LeftArmRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.rotateZ" 
 		""
-		3 "man_base_rig:HIKState2SK1.RightFootSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleX" 
+		3 "man_base_rig:HIKState2SK1.LeftArmSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.scaleX" 
 		""
-		3 "man_base_rig:HIKState2SK1.RightFootSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleY" 
+		3 "man_base_rig:HIKState2SK1.LeftArmSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.scaleY" 
 		""
-		3 "man_base_rig:HIKState2SK1.RightFootSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleZ" 
+		3 "man_base_rig:HIKState2SK1.LeftArmSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_l|man_base_rig:upperarm_l.scaleZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.Spine1Tx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.translateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.Spine1Ty" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.translateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.Spine1Tz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.translateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.Spine1Rx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.rotateX" 
+		""
+		3 "man_base_rig:HIKState2SK1.Spine1Ry" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.rotateY" 
+		""
+		3 "man_base_rig:HIKState2SK1.Spine1Rz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.rotateZ" 
+		""
+		3 "man_base_rig:HIKState2SK1.Spine1Sx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.scaleX" 
+		""
+		3 "man_base_rig:HIKState2SK1.Spine1Sy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.scaleY" 
+		""
+		3 "man_base_rig:HIKState2SK1.Spine1Sz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02.scaleZ" 
 		""
 		5 3 "man_base_rigRN" "|man_base_rig:man.message" "man_base_rigRN.placeHolderList[1]" 
 		""
@@ -4756,318 +4919,376 @@ createNode reference -n "man_base_rigRN";
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightForeArmRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r.rotateZ" 
 		"man_base_rigRN.placeHolderList[200]" "man_base_rigRN.placeHolderList[201]" "man_base_rig:lowerarm_r.rz"
 		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleX" 
-		"man_base_rigRN.placeHolderList[202]" "man_base_rigRN.placeHolderList[203]" "man_base_rig:hand_r.sx"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleY" 
-		"man_base_rigRN.placeHolderList[204]" "man_base_rigRN.placeHolderList[205]" "man_base_rig:hand_r.sy"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleZ" 
-		"man_base_rigRN.placeHolderList[206]" "man_base_rigRN.placeHolderList[207]" "man_base_rig:hand_r.sz"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateX" 
-		"man_base_rigRN.placeHolderList[208]" "man_base_rigRN.placeHolderList[209]" "man_base_rig:hand_r.tx"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateY" 
-		"man_base_rigRN.placeHolderList[210]" "man_base_rigRN.placeHolderList[211]" "man_base_rig:hand_r.ty"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateZ" 
-		"man_base_rigRN.placeHolderList[212]" "man_base_rigRN.placeHolderList[213]" "man_base_rig:hand_r.tz"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateX" 
-		"man_base_rigRN.placeHolderList[214]" "man_base_rigRN.placeHolderList[215]" "man_base_rig:hand_r.rx"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateY" 
-		"man_base_rigRN.placeHolderList[216]" "man_base_rigRN.placeHolderList[217]" "man_base_rig:hand_r.ry"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateZ" 
-		"man_base_rigRN.placeHolderList[218]" "man_base_rigRN.placeHolderList[219]" "man_base_rig:hand_r.rz"
-		
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleX" 
+		"man_base_rigRN.placeHolderList[202]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleX" 
+		"man_base_rigRN.placeHolderList[203]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleY" 
+		"man_base_rigRN.placeHolderList[204]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleY" 
+		"man_base_rigRN.placeHolderList[205]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleZ" 
+		"man_base_rigRN.placeHolderList[206]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.scaleZ" 
+		"man_base_rigRN.placeHolderList[207]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateX" 
+		"man_base_rigRN.placeHolderList[208]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateX" 
+		"man_base_rigRN.placeHolderList[209]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateY" 
+		"man_base_rigRN.placeHolderList[210]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateY" 
+		"man_base_rigRN.placeHolderList[211]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateZ" 
+		"man_base_rigRN.placeHolderList[212]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.translateZ" 
+		"man_base_rigRN.placeHolderList[213]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateX" 
+		"man_base_rigRN.placeHolderList[214]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateX" 
+		"man_base_rigRN.placeHolderList[215]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateY" 
+		"man_base_rigRN.placeHolderList[216]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateY" 
+		"man_base_rigRN.placeHolderList[217]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateZ" 
+		"man_base_rigRN.placeHolderList[218]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateZ" 
+		"man_base_rigRN.placeHolderList[219]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:lowerarm_r|man_base_rig:hand_r.rotateOrder" 
+		"man_base_rigRN.placeHolderList[220]" ""
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeafRightArmRoll1Tx" 
 		"|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.translateX" 
-		"man_base_rigRN.placeHolderList[220]" "man_base_rigRN.placeHolderList[221]" "man_base_rig:upperarm_twist_01_r.tx"
+		"man_base_rigRN.placeHolderList[221]" "man_base_rigRN.placeHolderList[222]" "man_base_rig:upperarm_twist_01_r.tx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeafRightArmRoll1Ty" 
 		"|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.translateY" 
-		"man_base_rigRN.placeHolderList[222]" "man_base_rigRN.placeHolderList[223]" "man_base_rig:upperarm_twist_01_r.ty"
+		"man_base_rigRN.placeHolderList[223]" "man_base_rigRN.placeHolderList[224]" "man_base_rig:upperarm_twist_01_r.ty"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeafRightArmRoll1Tz" 
 		"|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.translateZ" 
-		"man_base_rigRN.placeHolderList[224]" "man_base_rigRN.placeHolderList[225]" "man_base_rig:upperarm_twist_01_r.tz"
+		"man_base_rigRN.placeHolderList[225]" "man_base_rigRN.placeHolderList[226]" "man_base_rig:upperarm_twist_01_r.tz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeafRightArmRoll1Rx" 
 		"|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.rotateX" 
-		"man_base_rigRN.placeHolderList[226]" "man_base_rigRN.placeHolderList[227]" "man_base_rig:upperarm_twist_01_r.rx"
+		"man_base_rigRN.placeHolderList[227]" "man_base_rigRN.placeHolderList[228]" "man_base_rig:upperarm_twist_01_r.rx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeafRightArmRoll1Ry" 
 		"|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.rotateY" 
-		"man_base_rigRN.placeHolderList[228]" "man_base_rigRN.placeHolderList[229]" "man_base_rig:upperarm_twist_01_r.ry"
+		"man_base_rigRN.placeHolderList[229]" "man_base_rigRN.placeHolderList[230]" "man_base_rig:upperarm_twist_01_r.ry"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeafRightArmRoll1Rz" 
 		"|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.rotateZ" 
-		"man_base_rigRN.placeHolderList[230]" "man_base_rigRN.placeHolderList[231]" "man_base_rig:upperarm_twist_01_r.rz"
+		"man_base_rigRN.placeHolderList[231]" "man_base_rigRN.placeHolderList[232]" "man_base_rig:upperarm_twist_01_r.rz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeafRightArmRoll1Sx" 
 		"|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.scaleX" 
-		"man_base_rigRN.placeHolderList[232]" "man_base_rigRN.placeHolderList[233]" "man_base_rig:upperarm_twist_01_r.sx"
+		"man_base_rigRN.placeHolderList[233]" "man_base_rigRN.placeHolderList[234]" "man_base_rig:upperarm_twist_01_r.sx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeafRightArmRoll1Sy" 
 		"|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.scaleY" 
-		"man_base_rigRN.placeHolderList[234]" "man_base_rigRN.placeHolderList[235]" "man_base_rig:upperarm_twist_01_r.sy"
+		"man_base_rigRN.placeHolderList[235]" "man_base_rigRN.placeHolderList[236]" "man_base_rig:upperarm_twist_01_r.sy"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeafRightArmRoll1Sz" 
 		"|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:clavicle_r|man_base_rig:upperarm_r|man_base_rig:upperarm_twist_01_r.scaleZ" 
-		"man_base_rigRN.placeHolderList[236]" "man_base_rigRN.placeHolderList[237]" "man_base_rig:upperarm_twist_01_r.sz"
+		"man_base_rigRN.placeHolderList[237]" "man_base_rigRN.placeHolderList[238]" "man_base_rig:upperarm_twist_01_r.sz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.NeckSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.scaleX" 
-		"man_base_rigRN.placeHolderList[238]" "man_base_rigRN.placeHolderList[239]" "man_base_rig:neck_01.sx"
+		"man_base_rigRN.placeHolderList[239]" "man_base_rigRN.placeHolderList[240]" "man_base_rig:neck_01.sx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.NeckSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.scaleY" 
-		"man_base_rigRN.placeHolderList[240]" "man_base_rigRN.placeHolderList[241]" "man_base_rig:neck_01.sy"
+		"man_base_rigRN.placeHolderList[241]" "man_base_rigRN.placeHolderList[242]" "man_base_rig:neck_01.sy"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.NeckSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.scaleZ" 
-		"man_base_rigRN.placeHolderList[242]" "man_base_rigRN.placeHolderList[243]" "man_base_rig:neck_01.sz"
+		"man_base_rigRN.placeHolderList[243]" "man_base_rigRN.placeHolderList[244]" "man_base_rig:neck_01.sz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.NeckTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.translateX" 
-		"man_base_rigRN.placeHolderList[244]" "man_base_rigRN.placeHolderList[245]" "man_base_rig:neck_01.tx"
+		"man_base_rigRN.placeHolderList[245]" "man_base_rigRN.placeHolderList[246]" "man_base_rig:neck_01.tx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.NeckTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.translateY" 
-		"man_base_rigRN.placeHolderList[246]" "man_base_rigRN.placeHolderList[247]" "man_base_rig:neck_01.ty"
+		"man_base_rigRN.placeHolderList[247]" "man_base_rigRN.placeHolderList[248]" "man_base_rig:neck_01.ty"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.NeckTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.translateZ" 
-		"man_base_rigRN.placeHolderList[248]" "man_base_rigRN.placeHolderList[249]" "man_base_rig:neck_01.tz"
+		"man_base_rigRN.placeHolderList[249]" "man_base_rigRN.placeHolderList[250]" "man_base_rig:neck_01.tz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.NeckRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.rotateX" 
-		"man_base_rigRN.placeHolderList[250]" "man_base_rigRN.placeHolderList[251]" "man_base_rig:neck_01.rx"
+		"man_base_rigRN.placeHolderList[251]" "man_base_rigRN.placeHolderList[252]" "man_base_rig:neck_01.rx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.NeckRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.rotateY" 
-		"man_base_rigRN.placeHolderList[252]" "man_base_rigRN.placeHolderList[253]" "man_base_rig:neck_01.ry"
+		"man_base_rigRN.placeHolderList[253]" "man_base_rigRN.placeHolderList[254]" "man_base_rig:neck_01.ry"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.NeckRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01.rotateZ" 
-		"man_base_rigRN.placeHolderList[254]" "man_base_rigRN.placeHolderList[255]" "man_base_rig:neck_01.rz"
+		"man_base_rigRN.placeHolderList[255]" "man_base_rigRN.placeHolderList[256]" "man_base_rig:neck_01.rz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.HeadTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.translateX" 
-		"man_base_rigRN.placeHolderList[256]" "man_base_rigRN.placeHolderList[257]" "man_base_rig:head.tx"
+		"man_base_rigRN.placeHolderList[257]" "man_base_rigRN.placeHolderList[258]" "man_base_rig:head.tx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.HeadTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.translateY" 
-		"man_base_rigRN.placeHolderList[258]" "man_base_rigRN.placeHolderList[259]" "man_base_rig:head.ty"
+		"man_base_rigRN.placeHolderList[259]" "man_base_rigRN.placeHolderList[260]" "man_base_rig:head.ty"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.HeadTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.translateZ" 
-		"man_base_rigRN.placeHolderList[260]" "man_base_rigRN.placeHolderList[261]" "man_base_rig:head.tz"
+		"man_base_rigRN.placeHolderList[261]" "man_base_rigRN.placeHolderList[262]" "man_base_rig:head.tz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.HeadRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.rotateX" 
-		"man_base_rigRN.placeHolderList[262]" "man_base_rigRN.placeHolderList[263]" "man_base_rig:head.rx"
+		"man_base_rigRN.placeHolderList[263]" "man_base_rigRN.placeHolderList[264]" "man_base_rig:head.rx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.HeadRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.rotateY" 
-		"man_base_rigRN.placeHolderList[264]" "man_base_rigRN.placeHolderList[265]" "man_base_rig:head.ry"
+		"man_base_rigRN.placeHolderList[265]" "man_base_rigRN.placeHolderList[266]" "man_base_rig:head.ry"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.HeadRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.rotateZ" 
-		"man_base_rigRN.placeHolderList[266]" "man_base_rigRN.placeHolderList[267]" "man_base_rig:head.rz"
+		"man_base_rigRN.placeHolderList[267]" "man_base_rigRN.placeHolderList[268]" "man_base_rig:head.rz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.HeadSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.scaleX" 
-		"man_base_rigRN.placeHolderList[268]" "man_base_rigRN.placeHolderList[269]" "man_base_rig:head.sx"
+		"man_base_rigRN.placeHolderList[269]" "man_base_rigRN.placeHolderList[270]" "man_base_rig:head.sx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.HeadSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.scaleY" 
-		"man_base_rigRN.placeHolderList[270]" "man_base_rigRN.placeHolderList[271]" "man_base_rig:head.sy"
+		"man_base_rigRN.placeHolderList[271]" "man_base_rigRN.placeHolderList[272]" "man_base_rig:head.sy"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.HeadSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:spine_01|man_base_rig:spine_02|man_base_rig:spine_03|man_base_rig:neck_01|man_base_rig:head.scaleZ" 
-		"man_base_rigRN.placeHolderList[272]" "man_base_rigRN.placeHolderList[273]" "man_base_rig:head.sz"
+		"man_base_rigRN.placeHolderList[273]" "man_base_rigRN.placeHolderList[274]" "man_base_rig:head.sz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftUpLegSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.scaleX" 
-		"man_base_rigRN.placeHolderList[274]" "man_base_rigRN.placeHolderList[275]" "man_base_rig:thigh_l.sx"
+		"man_base_rigRN.placeHolderList[275]" "man_base_rigRN.placeHolderList[276]" "man_base_rig:thigh_l.sx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftUpLegSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.scaleY" 
-		"man_base_rigRN.placeHolderList[276]" "man_base_rigRN.placeHolderList[277]" "man_base_rig:thigh_l.sy"
+		"man_base_rigRN.placeHolderList[277]" "man_base_rigRN.placeHolderList[278]" "man_base_rig:thigh_l.sy"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftUpLegSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.scaleZ" 
-		"man_base_rigRN.placeHolderList[278]" "man_base_rigRN.placeHolderList[279]" "man_base_rig:thigh_l.sz"
+		"man_base_rigRN.placeHolderList[279]" "man_base_rigRN.placeHolderList[280]" "man_base_rig:thigh_l.sz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftUpLegTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.translateX" 
-		"man_base_rigRN.placeHolderList[280]" "man_base_rigRN.placeHolderList[281]" "man_base_rig:thigh_l.tx"
+		"man_base_rigRN.placeHolderList[281]" "man_base_rigRN.placeHolderList[282]" "man_base_rig:thigh_l.tx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftUpLegTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.translateY" 
-		"man_base_rigRN.placeHolderList[282]" "man_base_rigRN.placeHolderList[283]" "man_base_rig:thigh_l.ty"
+		"man_base_rigRN.placeHolderList[283]" "man_base_rigRN.placeHolderList[284]" "man_base_rig:thigh_l.ty"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftUpLegTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.translateZ" 
-		"man_base_rigRN.placeHolderList[284]" "man_base_rigRN.placeHolderList[285]" "man_base_rig:thigh_l.tz"
+		"man_base_rigRN.placeHolderList[285]" "man_base_rigRN.placeHolderList[286]" "man_base_rig:thigh_l.tz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftUpLegRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.rotateX" 
-		"man_base_rigRN.placeHolderList[286]" "man_base_rigRN.placeHolderList[287]" "man_base_rig:thigh_l.rx"
+		"man_base_rigRN.placeHolderList[287]" "man_base_rigRN.placeHolderList[288]" "man_base_rig:thigh_l.rx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftUpLegRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.rotateY" 
-		"man_base_rigRN.placeHolderList[288]" "man_base_rigRN.placeHolderList[289]" "man_base_rig:thigh_l.ry"
+		"man_base_rigRN.placeHolderList[289]" "man_base_rigRN.placeHolderList[290]" "man_base_rig:thigh_l.ry"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftUpLegRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l.rotateZ" 
-		"man_base_rigRN.placeHolderList[290]" "man_base_rigRN.placeHolderList[291]" "man_base_rig:thigh_l.rz"
+		"man_base_rigRN.placeHolderList[291]" "man_base_rigRN.placeHolderList[292]" "man_base_rig:thigh_l.rz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftLegSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.scaleX" 
-		"man_base_rigRN.placeHolderList[292]" "man_base_rigRN.placeHolderList[293]" "man_base_rig:calf_l.sx"
+		"man_base_rigRN.placeHolderList[293]" "man_base_rigRN.placeHolderList[294]" "man_base_rig:calf_l.sx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftLegSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.scaleY" 
-		"man_base_rigRN.placeHolderList[294]" "man_base_rigRN.placeHolderList[295]" "man_base_rig:calf_l.sy"
+		"man_base_rigRN.placeHolderList[295]" "man_base_rigRN.placeHolderList[296]" "man_base_rig:calf_l.sy"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftLegSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.scaleZ" 
-		"man_base_rigRN.placeHolderList[296]" "man_base_rigRN.placeHolderList[297]" "man_base_rig:calf_l.sz"
+		"man_base_rigRN.placeHolderList[297]" "man_base_rigRN.placeHolderList[298]" "man_base_rig:calf_l.sz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftLegTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.translateX" 
-		"man_base_rigRN.placeHolderList[298]" "man_base_rigRN.placeHolderList[299]" "man_base_rig:calf_l.tx"
+		"man_base_rigRN.placeHolderList[299]" "man_base_rigRN.placeHolderList[300]" "man_base_rig:calf_l.tx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftLegTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.translateY" 
-		"man_base_rigRN.placeHolderList[300]" "man_base_rigRN.placeHolderList[301]" "man_base_rig:calf_l.ty"
+		"man_base_rigRN.placeHolderList[301]" "man_base_rigRN.placeHolderList[302]" "man_base_rig:calf_l.ty"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftLegTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.translateZ" 
-		"man_base_rigRN.placeHolderList[302]" "man_base_rigRN.placeHolderList[303]" "man_base_rig:calf_l.tz"
+		"man_base_rigRN.placeHolderList[303]" "man_base_rigRN.placeHolderList[304]" "man_base_rig:calf_l.tz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftLegRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.rotateX" 
-		"man_base_rigRN.placeHolderList[304]" "man_base_rigRN.placeHolderList[305]" "man_base_rig:calf_l.rx"
+		"man_base_rigRN.placeHolderList[305]" "man_base_rigRN.placeHolderList[306]" "man_base_rig:calf_l.rx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftLegRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.rotateY" 
-		"man_base_rigRN.placeHolderList[306]" "man_base_rigRN.placeHolderList[307]" "man_base_rig:calf_l.ry"
+		"man_base_rigRN.placeHolderList[307]" "man_base_rigRN.placeHolderList[308]" "man_base_rig:calf_l.ry"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftLegRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l.rotateZ" 
-		"man_base_rigRN.placeHolderList[308]" "man_base_rigRN.placeHolderList[309]" "man_base_rig:calf_l.rz"
+		"man_base_rigRN.placeHolderList[309]" "man_base_rigRN.placeHolderList[310]" "man_base_rig:calf_l.rz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftFootSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.scaleX" 
-		"man_base_rigRN.placeHolderList[310]" "man_base_rigRN.placeHolderList[311]" "man_base_rig:foot_l.sx"
+		"man_base_rigRN.placeHolderList[311]" "man_base_rigRN.placeHolderList[312]" "man_base_rig:foot_l.sx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftFootSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.scaleY" 
-		"man_base_rigRN.placeHolderList[312]" "man_base_rigRN.placeHolderList[313]" "man_base_rig:foot_l.sy"
+		"man_base_rigRN.placeHolderList[313]" "man_base_rigRN.placeHolderList[314]" "man_base_rig:foot_l.sy"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftFootSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.scaleZ" 
-		"man_base_rigRN.placeHolderList[314]" "man_base_rigRN.placeHolderList[315]" "man_base_rig:foot_l.sz"
+		"man_base_rigRN.placeHolderList[315]" "man_base_rigRN.placeHolderList[316]" "man_base_rig:foot_l.sz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftFootTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.translateX" 
-		"man_base_rigRN.placeHolderList[316]" "man_base_rigRN.placeHolderList[317]" "man_base_rig:foot_l.tx"
+		"man_base_rigRN.placeHolderList[317]" "man_base_rigRN.placeHolderList[318]" "man_base_rig:foot_l.tx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftFootTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.translateY" 
-		"man_base_rigRN.placeHolderList[318]" "man_base_rigRN.placeHolderList[319]" "man_base_rig:foot_l.ty"
+		"man_base_rigRN.placeHolderList[319]" "man_base_rigRN.placeHolderList[320]" "man_base_rig:foot_l.ty"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftFootTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.translateZ" 
-		"man_base_rigRN.placeHolderList[320]" "man_base_rigRN.placeHolderList[321]" "man_base_rig:foot_l.tz"
+		"man_base_rigRN.placeHolderList[321]" "man_base_rigRN.placeHolderList[322]" "man_base_rig:foot_l.tz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftFootRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.rotateX" 
-		"man_base_rigRN.placeHolderList[322]" "man_base_rigRN.placeHolderList[323]" "man_base_rig:foot_l.rx"
+		"man_base_rigRN.placeHolderList[323]" "man_base_rigRN.placeHolderList[324]" "man_base_rig:foot_l.rx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftFootRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.rotateY" 
-		"man_base_rigRN.placeHolderList[324]" "man_base_rigRN.placeHolderList[325]" "man_base_rig:foot_l.ry"
+		"man_base_rigRN.placeHolderList[325]" "man_base_rigRN.placeHolderList[326]" "man_base_rig:foot_l.ry"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftFootRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l.rotateZ" 
-		"man_base_rigRN.placeHolderList[326]" "man_base_rigRN.placeHolderList[327]" "man_base_rig:foot_l.rz"
+		"man_base_rigRN.placeHolderList[327]" "man_base_rigRN.placeHolderList[328]" "man_base_rig:foot_l.rz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftToeBaseTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.translateX" 
-		"man_base_rigRN.placeHolderList[328]" "man_base_rigRN.placeHolderList[329]" "man_base_rig:ball_l.tx"
+		"man_base_rigRN.placeHolderList[329]" "man_base_rigRN.placeHolderList[330]" "man_base_rig:ball_l.tx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftToeBaseTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.translateY" 
-		"man_base_rigRN.placeHolderList[330]" "man_base_rigRN.placeHolderList[331]" "man_base_rig:ball_l.ty"
+		"man_base_rigRN.placeHolderList[331]" "man_base_rigRN.placeHolderList[332]" "man_base_rig:ball_l.ty"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftToeBaseTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.translateZ" 
-		"man_base_rigRN.placeHolderList[332]" "man_base_rigRN.placeHolderList[333]" "man_base_rig:ball_l.tz"
+		"man_base_rigRN.placeHolderList[333]" "man_base_rigRN.placeHolderList[334]" "man_base_rig:ball_l.tz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftToeBaseRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.rotateX" 
-		"man_base_rigRN.placeHolderList[334]" "man_base_rigRN.placeHolderList[335]" "man_base_rig:ball_l.rx"
+		"man_base_rigRN.placeHolderList[335]" "man_base_rigRN.placeHolderList[336]" "man_base_rig:ball_l.rx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftToeBaseRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.rotateY" 
-		"man_base_rigRN.placeHolderList[336]" "man_base_rigRN.placeHolderList[337]" "man_base_rig:ball_l.ry"
+		"man_base_rigRN.placeHolderList[337]" "man_base_rigRN.placeHolderList[338]" "man_base_rig:ball_l.ry"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftToeBaseRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.rotateZ" 
-		"man_base_rigRN.placeHolderList[338]" "man_base_rigRN.placeHolderList[339]" "man_base_rig:ball_l.rz"
+		"man_base_rigRN.placeHolderList[339]" "man_base_rigRN.placeHolderList[340]" "man_base_rig:ball_l.rz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftToeBaseSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.scaleX" 
-		"man_base_rigRN.placeHolderList[340]" "man_base_rigRN.placeHolderList[341]" "man_base_rig:ball_l.sx"
+		"man_base_rigRN.placeHolderList[341]" "man_base_rigRN.placeHolderList[342]" "man_base_rig:ball_l.sx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftToeBaseSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.scaleY" 
-		"man_base_rigRN.placeHolderList[342]" "man_base_rigRN.placeHolderList[343]" "man_base_rig:ball_l.sy"
+		"man_base_rigRN.placeHolderList[343]" "man_base_rigRN.placeHolderList[344]" "man_base_rig:ball_l.sy"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.LeftToeBaseSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_l|man_base_rig:calf_l|man_base_rig:foot_l|man_base_rig:ball_l.scaleZ" 
-		"man_base_rigRN.placeHolderList[344]" "man_base_rigRN.placeHolderList[345]" "man_base_rig:ball_l.sz"
+		"man_base_rigRN.placeHolderList[345]" "man_base_rigRN.placeHolderList[346]" "man_base_rig:ball_l.sz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightUpLegSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.scaleX" 
-		"man_base_rigRN.placeHolderList[346]" "man_base_rigRN.placeHolderList[347]" "man_base_rig:thigh_r.sx"
+		"man_base_rigRN.placeHolderList[347]" "man_base_rigRN.placeHolderList[348]" "man_base_rig:thigh_r.sx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightUpLegSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.scaleY" 
-		"man_base_rigRN.placeHolderList[348]" "man_base_rigRN.placeHolderList[349]" "man_base_rig:thigh_r.sy"
+		"man_base_rigRN.placeHolderList[349]" "man_base_rigRN.placeHolderList[350]" "man_base_rig:thigh_r.sy"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightUpLegSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.scaleZ" 
-		"man_base_rigRN.placeHolderList[350]" "man_base_rigRN.placeHolderList[351]" "man_base_rig:thigh_r.sz"
+		"man_base_rigRN.placeHolderList[351]" "man_base_rigRN.placeHolderList[352]" "man_base_rig:thigh_r.sz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightUpLegTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.translateX" 
-		"man_base_rigRN.placeHolderList[352]" "man_base_rigRN.placeHolderList[353]" "man_base_rig:thigh_r.tx"
+		"man_base_rigRN.placeHolderList[353]" "man_base_rigRN.placeHolderList[354]" "man_base_rig:thigh_r.tx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightUpLegTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.translateY" 
-		"man_base_rigRN.placeHolderList[354]" "man_base_rigRN.placeHolderList[355]" "man_base_rig:thigh_r.ty"
+		"man_base_rigRN.placeHolderList[355]" "man_base_rigRN.placeHolderList[356]" "man_base_rig:thigh_r.ty"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightUpLegTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.translateZ" 
-		"man_base_rigRN.placeHolderList[356]" "man_base_rigRN.placeHolderList[357]" "man_base_rig:thigh_r.tz"
+		"man_base_rigRN.placeHolderList[357]" "man_base_rigRN.placeHolderList[358]" "man_base_rig:thigh_r.tz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightUpLegRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.rotateX" 
-		"man_base_rigRN.placeHolderList[358]" "man_base_rigRN.placeHolderList[359]" "man_base_rig:thigh_r.rx"
+		"man_base_rigRN.placeHolderList[359]" "man_base_rigRN.placeHolderList[360]" "man_base_rig:thigh_r.rx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightUpLegRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.rotateY" 
-		"man_base_rigRN.placeHolderList[360]" "man_base_rigRN.placeHolderList[361]" "man_base_rig:thigh_r.ry"
+		"man_base_rigRN.placeHolderList[361]" "man_base_rigRN.placeHolderList[362]" "man_base_rig:thigh_r.ry"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightUpLegRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r.rotateZ" 
-		"man_base_rigRN.placeHolderList[362]" "man_base_rigRN.placeHolderList[363]" "man_base_rig:thigh_r.rz"
+		"man_base_rigRN.placeHolderList[363]" "man_base_rigRN.placeHolderList[364]" "man_base_rig:thigh_r.rz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightLegSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.scaleX" 
-		"man_base_rigRN.placeHolderList[364]" "man_base_rigRN.placeHolderList[365]" "man_base_rig:calf_r.sx"
+		"man_base_rigRN.placeHolderList[365]" "man_base_rigRN.placeHolderList[366]" "man_base_rig:calf_r.sx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightLegSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.scaleY" 
-		"man_base_rigRN.placeHolderList[366]" "man_base_rigRN.placeHolderList[367]" "man_base_rig:calf_r.sy"
+		"man_base_rigRN.placeHolderList[367]" "man_base_rigRN.placeHolderList[368]" "man_base_rig:calf_r.sy"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightLegSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.scaleZ" 
-		"man_base_rigRN.placeHolderList[368]" "man_base_rigRN.placeHolderList[369]" "man_base_rig:calf_r.sz"
+		"man_base_rigRN.placeHolderList[369]" "man_base_rigRN.placeHolderList[370]" "man_base_rig:calf_r.sz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightLegTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.translateX" 
-		"man_base_rigRN.placeHolderList[370]" "man_base_rigRN.placeHolderList[371]" "man_base_rig:calf_r.tx"
+		"man_base_rigRN.placeHolderList[371]" "man_base_rigRN.placeHolderList[372]" "man_base_rig:calf_r.tx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightLegTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.translateY" 
-		"man_base_rigRN.placeHolderList[372]" "man_base_rigRN.placeHolderList[373]" "man_base_rig:calf_r.ty"
+		"man_base_rigRN.placeHolderList[373]" "man_base_rigRN.placeHolderList[374]" "man_base_rig:calf_r.ty"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightLegTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.translateZ" 
-		"man_base_rigRN.placeHolderList[374]" "man_base_rigRN.placeHolderList[375]" "man_base_rig:calf_r.tz"
+		"man_base_rigRN.placeHolderList[375]" "man_base_rigRN.placeHolderList[376]" "man_base_rig:calf_r.tz"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightLegRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.rotateX" 
-		"man_base_rigRN.placeHolderList[376]" "man_base_rigRN.placeHolderList[377]" "man_base_rig:calf_r.rx"
+		"man_base_rigRN.placeHolderList[377]" "man_base_rigRN.placeHolderList[378]" "man_base_rig:calf_r.rx"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightLegRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.rotateY" 
-		"man_base_rigRN.placeHolderList[378]" "man_base_rigRN.placeHolderList[379]" "man_base_rig:calf_r.ry"
+		"man_base_rigRN.placeHolderList[379]" "man_base_rigRN.placeHolderList[380]" "man_base_rig:calf_r.ry"
 		
 		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightLegRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r.rotateZ" 
-		"man_base_rigRN.placeHolderList[380]" "man_base_rigRN.placeHolderList[381]" "man_base_rig:calf_r.rz"
+		"man_base_rigRN.placeHolderList[381]" "man_base_rigRN.placeHolderList[382]" "man_base_rig:calf_r.rz"
 		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootSx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleX" 
-		"man_base_rigRN.placeHolderList[382]" "man_base_rigRN.placeHolderList[383]" "man_base_rig:foot_r.sx"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootSy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleY" 
-		"man_base_rigRN.placeHolderList[384]" "man_base_rigRN.placeHolderList[385]" "man_base_rig:foot_r.sy"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootSz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleZ" 
-		"man_base_rigRN.placeHolderList[386]" "man_base_rigRN.placeHolderList[387]" "man_base_rig:foot_r.sz"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootTx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateX" 
-		"man_base_rigRN.placeHolderList[388]" "man_base_rigRN.placeHolderList[389]" "man_base_rig:foot_r.tx"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootTy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateY" 
-		"man_base_rigRN.placeHolderList[390]" "man_base_rigRN.placeHolderList[391]" "man_base_rig:foot_r.ty"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootTz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateZ" 
-		"man_base_rigRN.placeHolderList[392]" "man_base_rigRN.placeHolderList[393]" "man_base_rig:foot_r.tz"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootRx" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateX" 
-		"man_base_rigRN.placeHolderList[394]" "man_base_rigRN.placeHolderList[395]" "man_base_rig:foot_r.rx"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootRy" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateY" 
-		"man_base_rigRN.placeHolderList[396]" "man_base_rigRN.placeHolderList[397]" "man_base_rig:foot_r.ry"
-		
-		5 0 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootRz" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateZ" 
-		"man_base_rigRN.placeHolderList[398]" "man_base_rigRN.placeHolderList[399]" "man_base_rig:foot_r.rz"
-		
-		5 3 "man_base_rigRN" "man_base_rig:man_base.OutputCharacterDefinition" 
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleX" 
+		"man_base_rigRN.placeHolderList[383]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleX" 
+		"man_base_rigRN.placeHolderList[384]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleY" 
+		"man_base_rigRN.placeHolderList[385]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleY" 
+		"man_base_rigRN.placeHolderList[386]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleZ" 
+		"man_base_rigRN.placeHolderList[387]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.scaleZ" 
+		"man_base_rigRN.placeHolderList[388]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateX" 
+		"man_base_rigRN.placeHolderList[389]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateX" 
+		"man_base_rigRN.placeHolderList[390]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateY" 
+		"man_base_rigRN.placeHolderList[391]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateY" 
+		"man_base_rigRN.placeHolderList[392]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateZ" 
+		"man_base_rigRN.placeHolderList[393]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.translateZ" 
+		"man_base_rigRN.placeHolderList[394]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateX" 
+		"man_base_rigRN.placeHolderList[395]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateX" 
+		"man_base_rigRN.placeHolderList[396]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateY" 
+		"man_base_rigRN.placeHolderList[397]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateY" 
+		"man_base_rigRN.placeHolderList[398]" ""
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateZ" 
+		"man_base_rigRN.placeHolderList[399]" ""
+		5 4 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateZ" 
 		"man_base_rigRN.placeHolderList[400]" ""
-		5 3 "man_base_rigRN" "man_base_rig:HIKproperties1.OutputPropertySetState" 
+		5 3 "man_base_rigRN" "|man_base_rig:man|man_base_rig:root|man_base_rig:pelvis|man_base_rig:thigh_r|man_base_rig:calf_r|man_base_rig:foot_r.rotateOrder" 
 		"man_base_rigRN.placeHolderList[401]" ""
+		5 3 "man_base_rigRN" "man_base_rig:man_base.OutputCharacterDefinition" 
+		"man_base_rigRN.placeHolderList[402]" ""
+		5 3 "man_base_rigRN" "man_base_rig:HIKproperties1.OutputPropertySetState" 
+		"man_base_rigRN.placeHolderList[403]" ""
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandSx" "man_base_rigRN.placeHolderList[404]" 
+		"man_base_rig:hand_r.sx"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandSy" "man_base_rigRN.placeHolderList[405]" 
+		"man_base_rig:hand_r.sy"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandSz" "man_base_rigRN.placeHolderList[406]" 
+		"man_base_rig:hand_r.sz"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandTx" "man_base_rigRN.placeHolderList[407]" 
+		"man_base_rig:hand_r.tx"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandTy" "man_base_rigRN.placeHolderList[408]" 
+		"man_base_rig:hand_r.ty"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandTz" "man_base_rigRN.placeHolderList[409]" 
+		"man_base_rig:hand_r.tz"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandRx" "man_base_rigRN.placeHolderList[410]" 
+		"man_base_rig:hand_r.rx"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandRy" "man_base_rigRN.placeHolderList[411]" 
+		"man_base_rig:hand_r.ry"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightHandRz" "man_base_rigRN.placeHolderList[412]" 
+		"man_base_rig:hand_r.rz"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootSx" "man_base_rigRN.placeHolderList[413]" 
+		"man_base_rig:foot_r.sx"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootSy" "man_base_rigRN.placeHolderList[414]" 
+		"man_base_rig:foot_r.sy"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootSz" "man_base_rigRN.placeHolderList[415]" 
+		"man_base_rig:foot_r.sz"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootTx" "man_base_rigRN.placeHolderList[416]" 
+		"man_base_rig:foot_r.tx"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootTy" "man_base_rigRN.placeHolderList[417]" 
+		"man_base_rig:foot_r.ty"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootTz" "man_base_rigRN.placeHolderList[418]" 
+		"man_base_rig:foot_r.tz"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootRx" "man_base_rigRN.placeHolderList[419]" 
+		"man_base_rig:foot_r.rx"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootRy" "man_base_rigRN.placeHolderList[420]" 
+		"man_base_rig:foot_r.ry"
+		5 3 "man_base_rigRN" "man_base_rig:HIKState2SK1.RightFootRz" "man_base_rigRN.placeHolderList[421]" 
+		"man_base_rig:foot_r.rz"
 		5 4 "man_base_rigRN" "man_base_rig:HIKState2SK1.InputCharacterState" 
-		"man_base_rigRN.placeHolderList[402]" "";
+		"man_base_rigRN.placeHolderList[422]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode HIKRetargeterNode -n "HIKRetargeterNode2";
@@ -5088,10 +5309,8 @@ createNode nodeGraphEditorInfo -n "MayaNodeEditorSavedTabsInfo";
 	setAttr ".tgi[0].ni[1].nvs" 18306;
 createNode animLayer -n "BaseAnimation";
 	rename -uid "04E32A2C-46BE-6DB2-604A-3C86C87EDC64";
-	setAttr -s 2 ".cdly";
-	setAttr -s 2 ".chsl";
-	setAttr ".pref" yes;
-	setAttr ".slct" yes;
+	setAttr -s 3 ".cdly";
+	setAttr -s 3 ".chsl";
 	setAttr ".ovrd" yes;
 createNode animLayer -n "AnimLayer1";
 	rename -uid "D41B9DCE-483A-D9FD-95D4-8EB7D7815BD6";
@@ -5106,7 +5325,7 @@ createNode animBlendNodeAdditiveDL -n "Spine3_translateZ_AnimLayer1";
 	rename -uid "D1A9C37B-4175-5922-3C96-3F914A136AD2";
 createNode animBlendNodeAdditiveRotation -n "Spine3_rotate_AnimLayer1";
 	rename -uid "D9BBAB72-4A89-2F9B-BF62-E9A3A1948F15";
-	setAttr ".o" -type "double3" -8.8455950195716895 -1.0940229892730746 0.081657320261001559 ;
+	setAttr ".o" -type "double3" -9.0100621159004248 -0.045322950929406684 -0.48089900612831121 ;
 createNode animBlendNodeAdditiveScale -n "Spine3_scaleX_AnimLayer1";
 	rename -uid "1A8F1B4F-4A5E-1926-D349-F484FDF9175B";
 	setAttr ".o" 1;
@@ -5128,7 +5347,7 @@ createNode animBlendNodeAdditiveDL -n "Neck_translateZ_AnimLayer1";
 	rename -uid "3508E00C-455F-C204-F2C8-09BCA8D43527";
 createNode animBlendNodeAdditiveRotation -n "Neck_rotate_AnimLayer1";
 	rename -uid "700A3F0E-4B37-E33B-EB19-F09815DCD113";
-	setAttr ".o" -type "double3" 7.6649855201316983 1.6789079904556328 -1.2905919551849387 ;
+	setAttr ".o" -type "double3" 5.7889154975486896 1.9769870042800957 -1.1035369634628318 ;
 createNode animBlendNodeAdditiveScale -n "Neck_scaleX_AnimLayer1";
 	rename -uid "1A6CFBF0-4A30-18FC-04FB-4BBBB3586187";
 	setAttr ".o" 1;
@@ -5255,7 +5474,7 @@ createNode animBlendNodeAdditiveDL -n "Spine_translateZ_AnimLayer2";
 	setAttr ".o" -0.026602484285831451;
 createNode animBlendNodeAdditiveRotation -n "Spine_rotate_AnimLayer2";
 	rename -uid "335A2AB2-4EC7-018A-97B7-D09214FFD4EE";
-	setAttr ".o" -type "double3" 14.352514190489662 -3.2874789237976083 0.11244600266218066 ;
+	setAttr ".o" -type "double3" 13.859089298064127 -0.081837788224221289 -1.4461050033569349 ;
 createNode animBlendNodeAdditiveScale -n "Spine_scaleX_AnimLayer2";
 	rename -uid "B085BC5D-4789-5A02-0CA9-858390CB902C";
 	setAttr ".o" 1;
@@ -5318,20 +5537,137 @@ createNode animCurveTU -n "Spine_filmboxTypeID_AnimLayer2_inputB";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
 	setAttr ".ktv[0]"  7 0;
-select -ne :time1;
+createNode animLayer -n "GiantHand";
+	rename -uid "B690DB84-4DF4-BA25-7988-67B5EAB538E5";
+	setAttr -s 18 ".dsm";
+	setAttr -s 14 ".bnds";
+	setAttr ".mt" yes;
+	setAttr ".lo" yes;
+	setAttr ".pref" yes;
+	setAttr ".slct" yes;
+createNode animBlendNodeAdditiveDL -n "foot_r_translateX_GiantHand";
+	rename -uid "B4B2D133-4DE4-2E75-54FC-FBBA67F61CD7";
+	setAttr ".o" 40.196821274219275;
+createNode animBlendNodeAdditiveDL -n "foot_r_translateY_GiantHand";
+	rename -uid "7D9A0C47-4089-DDBC-911F-258CE2D1E0C9";
+	setAttr ".o" 1.1621323352528634e-06;
+createNode animBlendNodeAdditiveDL -n "foot_r_translateZ_GiantHand";
+	rename -uid "000F3C79-4E96-C892-5385-C7AC42558AD2";
+	setAttr ".o" -2.3074693942248814e-05;
+createNode animBlendNodeAdditiveRotation -n "foot_r_rotate_GiantHand";
+	rename -uid "AB1EAAAE-45E4-9CAC-D21E-D3B2C13CB2E8";
+	setAttr ".o" -type "double3" 2.0547823779942154 2.2606270793418446 -0.33308083978083514 ;
+createNode animBlendNodeAdditiveScale -n "foot_r_scaleX_GiantHand";
+	rename -uid "AF366F3D-4B1A-D9DA-FBB1-BBA14582A6EB";
+	setAttr ".ib" 1;
 	setAttr ".o" 1;
-	setAttr ".unw" 1;
+createNode animBlendNodeAdditiveScale -n "foot_r_scaleY_GiantHand";
+	rename -uid "667E6C85-4F77-9766-2728-C3B1B9D05BBB";
+	setAttr ".ib" 1;
+	setAttr ".o" 1;
+createNode animBlendNodeAdditiveScale -n "foot_r_scaleZ_GiantHand";
+	rename -uid "0B81DD32-4A2F-DBAE-8EFB-24AB601225A5";
+	setAttr ".ib" 1;
+	setAttr ".o" 1;
+createNode animBlendNodeAdditiveDL -n "hand_r_translateX_GiantHand";
+	rename -uid "D4F7AC30-41E1-159B-23B8-8BB1BE298078";
+	setAttr ".o" -26.975228945369125;
+createNode animBlendNodeAdditiveDL -n "hand_r_translateY_GiantHand";
+	rename -uid "AE3AB8B4-47A0-6779-5C4B-77B29DD3BADB";
+	setAttr ".o" 2.5462738251214034e-05;
+createNode animBlendNodeAdditiveDL -n "hand_r_translateZ_GiantHand";
+	rename -uid "6363EACA-4250-53B7-9876-6C808BB80A6D";
+	setAttr ".o" -5.5601948716343941e-06;
+createNode animBlendNodeAdditiveRotation -n "hand_r_rotate_GiantHand";
+	rename -uid "20177A01-40FA-A3AB-CFCD-0F8B51127CE0";
+	setAttr ".o" -type "double3" -67.375507858027404 -0.48237433814743419 -1.201634697273839 ;
+createNode animBlendNodeAdditiveScale -n "hand_r_scaleX_GiantHand";
+	rename -uid "BF6F18D3-4AC0-C9DD-3FD3-FEBBC2D93831";
+	setAttr ".o" 1;
+createNode animBlendNodeAdditiveScale -n "hand_r_scaleY_GiantHand";
+	rename -uid "0F24A423-4478-7867-1AE1-FA80CFDDF5D3";
+	setAttr ".o" 1;
+createNode animBlendNodeAdditiveScale -n "hand_r_scaleZ_GiantHand";
+	rename -uid "9F690915-454D-6E1E-7E7B-9FBB12D9AB46";
+	setAttr ".o" 1;
+createNode animCurveTU -n "hand_r_scaleX_AnimLayer3_inputB";
+	rename -uid "CFEBEA91-4F61-900A-F82B-B1B5F8B11C8A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -l on ".ktv[0]"  1 2.8042894511596339;
+	setAttr -l on ".ktv";
+	setAttr -l on ".ktv[0]";
+createNode animCurveTU -n "hand_r_scaleY_AnimLayer3_inputB";
+	rename -uid "DF5E92A1-42AA-C536-1488-4EBCC6CB68FA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -l on ".ktv[0]"  1 2.8042894511596339;
+	setAttr -l on ".ktv";
+	setAttr -l on ".ktv[0]";
+createNode animCurveTU -n "hand_r_scaleZ_AnimLayer3_inputB";
+	rename -uid "C874F2B9-426B-576E-2808-B499F12B9662";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -l on ".ktv[0]"  1 2.8042894511596339;
+	setAttr -l on ".ktv";
+	setAttr -l on ".ktv[0]";
+createNode animCurveTL -n "hand_r_translateX_AnimLayer3_inputB";
+	rename -uid "53CBFD47-47BD-6320-0C30-40B1CA4435CD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -l on ".ktv[0]"  1 0;
+	setAttr -l on ".ktv";
+	setAttr -l on ".ktv[0]";
+createNode animCurveTL -n "hand_r_translateY_AnimLayer3_inputB";
+	rename -uid "43C527F6-4D9C-4EEC-A34D-F599459BC39C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -l on ".ktv[0]"  1 0;
+	setAttr -l on ".ktv";
+	setAttr -l on ".ktv[0]";
+createNode animCurveTL -n "hand_r_translateZ_AnimLayer3_inputB";
+	rename -uid "F549F4CC-4A54-6133-C10E-D0AFD0965903";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -l on ".ktv[0]"  1 0;
+	setAttr -l on ".ktv";
+	setAttr -l on ".ktv[0]";
+createNode animCurveTA -n "hand_r_rotate_AnimLayer3_inputBX";
+	rename -uid "B50B6C56-4FDE-938B-B5E4-82B5196C23A2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -l on ".ktv[0]"  1 0;
+	setAttr -l on ".ktv";
+	setAttr -l on ".ktv[0]";
+createNode animCurveTA -n "hand_r_rotate_AnimLayer3_inputBY";
+	rename -uid "AA7FEBB8-497B-9A07-A325-0BAA5902808C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -l on ".ktv[0]"  1 0;
+	setAttr -l on ".ktv";
+	setAttr -l on ".ktv[0]";
+createNode animCurveTA -n "hand_r_rotate_AnimLayer3_inputBZ";
+	rename -uid "E88FF38C-456D-768F-9585-AEBA3C73E1D1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -l on ".ktv[0]"  1 0;
+	setAttr -l on ".ktv";
+	setAttr -l on ".ktv[0]";
+select -ne :time1;
+	setAttr ".o" 23;
+	setAttr ".unw" 23;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
 		 1 1 1 0 0 0 0 0 0 0 0 0
 		 0 0 0 0 ;
+	setAttr ".msaa" yes;
 	setAttr ".fprt" yes;
 select -ne :renderPartition;
 	setAttr -s 4 ".st";
 select -ne :renderGlobalsList1;
 select -ne :defaultShaderList1;
-	setAttr -s 6 ".s";
+	setAttr -s 7 ".s";
 select -ne :postProcessList1;
 	setAttr -s 2 ".p";
 select -ne :defaultRenderingList1;
@@ -5340,6 +5676,9 @@ select -ne :initialShadingGroup;
 	setAttr ".ro" yes;
 select -ne :initialParticleSE;
 	setAttr ".ro" yes;
+select -ne :defaultRenderGlobals;
+	addAttr -ci true -h true -sn "dss" -ln "defaultSurfaceShader" -dt "string";
+	setAttr ".dss" -type "string" "lambert1";
 select -ne :defaultResolution;
 	setAttr ".pa" 1;
 select -ne :hardwareRenderGlobals;
@@ -5449,110 +5788,148 @@ connectAttr "man_base_rigRN.phl[194]" "man_base_rigRN.phl[195]";
 connectAttr "man_base_rigRN.phl[196]" "man_base_rigRN.phl[197]";
 connectAttr "man_base_rigRN.phl[198]" "man_base_rigRN.phl[199]";
 connectAttr "man_base_rigRN.phl[200]" "man_base_rigRN.phl[201]";
-connectAttr "man_base_rigRN.phl[202]" "man_base_rigRN.phl[203]";
-connectAttr "man_base_rigRN.phl[204]" "man_base_rigRN.phl[205]";
-connectAttr "man_base_rigRN.phl[206]" "man_base_rigRN.phl[207]";
-connectAttr "man_base_rigRN.phl[208]" "man_base_rigRN.phl[209]";
-connectAttr "man_base_rigRN.phl[210]" "man_base_rigRN.phl[211]";
-connectAttr "man_base_rigRN.phl[212]" "man_base_rigRN.phl[213]";
-connectAttr "man_base_rigRN.phl[214]" "man_base_rigRN.phl[215]";
-connectAttr "man_base_rigRN.phl[216]" "man_base_rigRN.phl[217]";
-connectAttr "man_base_rigRN.phl[218]" "man_base_rigRN.phl[219]";
-connectAttr "man_base_rigRN.phl[220]" "man_base_rigRN.phl[221]";
-connectAttr "man_base_rigRN.phl[222]" "man_base_rigRN.phl[223]";
-connectAttr "man_base_rigRN.phl[224]" "man_base_rigRN.phl[225]";
-connectAttr "man_base_rigRN.phl[226]" "man_base_rigRN.phl[227]";
-connectAttr "man_base_rigRN.phl[228]" "man_base_rigRN.phl[229]";
-connectAttr "man_base_rigRN.phl[230]" "man_base_rigRN.phl[231]";
-connectAttr "man_base_rigRN.phl[232]" "man_base_rigRN.phl[233]";
-connectAttr "man_base_rigRN.phl[234]" "man_base_rigRN.phl[235]";
-connectAttr "man_base_rigRN.phl[236]" "man_base_rigRN.phl[237]";
-connectAttr "man_base_rigRN.phl[238]" "man_base_rigRN.phl[239]";
-connectAttr "man_base_rigRN.phl[240]" "man_base_rigRN.phl[241]";
-connectAttr "man_base_rigRN.phl[242]" "man_base_rigRN.phl[243]";
-connectAttr "man_base_rigRN.phl[244]" "man_base_rigRN.phl[245]";
-connectAttr "man_base_rigRN.phl[246]" "man_base_rigRN.phl[247]";
-connectAttr "man_base_rigRN.phl[248]" "man_base_rigRN.phl[249]";
-connectAttr "man_base_rigRN.phl[250]" "man_base_rigRN.phl[251]";
-connectAttr "man_base_rigRN.phl[252]" "man_base_rigRN.phl[253]";
-connectAttr "man_base_rigRN.phl[254]" "man_base_rigRN.phl[255]";
-connectAttr "man_base_rigRN.phl[256]" "man_base_rigRN.phl[257]";
-connectAttr "man_base_rigRN.phl[258]" "man_base_rigRN.phl[259]";
-connectAttr "man_base_rigRN.phl[260]" "man_base_rigRN.phl[261]";
-connectAttr "man_base_rigRN.phl[262]" "man_base_rigRN.phl[263]";
-connectAttr "man_base_rigRN.phl[264]" "man_base_rigRN.phl[265]";
-connectAttr "man_base_rigRN.phl[266]" "man_base_rigRN.phl[267]";
-connectAttr "man_base_rigRN.phl[268]" "man_base_rigRN.phl[269]";
-connectAttr "man_base_rigRN.phl[270]" "man_base_rigRN.phl[271]";
-connectAttr "man_base_rigRN.phl[272]" "man_base_rigRN.phl[273]";
-connectAttr "man_base_rigRN.phl[274]" "man_base_rigRN.phl[275]";
-connectAttr "man_base_rigRN.phl[276]" "man_base_rigRN.phl[277]";
-connectAttr "man_base_rigRN.phl[278]" "man_base_rigRN.phl[279]";
-connectAttr "man_base_rigRN.phl[280]" "man_base_rigRN.phl[281]";
-connectAttr "man_base_rigRN.phl[282]" "man_base_rigRN.phl[283]";
-connectAttr "man_base_rigRN.phl[284]" "man_base_rigRN.phl[285]";
-connectAttr "man_base_rigRN.phl[286]" "man_base_rigRN.phl[287]";
-connectAttr "man_base_rigRN.phl[288]" "man_base_rigRN.phl[289]";
-connectAttr "man_base_rigRN.phl[290]" "man_base_rigRN.phl[291]";
-connectAttr "man_base_rigRN.phl[292]" "man_base_rigRN.phl[293]";
-connectAttr "man_base_rigRN.phl[294]" "man_base_rigRN.phl[295]";
-connectAttr "man_base_rigRN.phl[296]" "man_base_rigRN.phl[297]";
-connectAttr "man_base_rigRN.phl[298]" "man_base_rigRN.phl[299]";
-connectAttr "man_base_rigRN.phl[300]" "man_base_rigRN.phl[301]";
-connectAttr "man_base_rigRN.phl[302]" "man_base_rigRN.phl[303]";
-connectAttr "man_base_rigRN.phl[304]" "man_base_rigRN.phl[305]";
-connectAttr "man_base_rigRN.phl[306]" "man_base_rigRN.phl[307]";
-connectAttr "man_base_rigRN.phl[308]" "man_base_rigRN.phl[309]";
-connectAttr "man_base_rigRN.phl[310]" "man_base_rigRN.phl[311]";
-connectAttr "man_base_rigRN.phl[312]" "man_base_rigRN.phl[313]";
-connectAttr "man_base_rigRN.phl[314]" "man_base_rigRN.phl[315]";
-connectAttr "man_base_rigRN.phl[316]" "man_base_rigRN.phl[317]";
-connectAttr "man_base_rigRN.phl[318]" "man_base_rigRN.phl[319]";
-connectAttr "man_base_rigRN.phl[320]" "man_base_rigRN.phl[321]";
-connectAttr "man_base_rigRN.phl[322]" "man_base_rigRN.phl[323]";
-connectAttr "man_base_rigRN.phl[324]" "man_base_rigRN.phl[325]";
-connectAttr "man_base_rigRN.phl[326]" "man_base_rigRN.phl[327]";
-connectAttr "man_base_rigRN.phl[328]" "man_base_rigRN.phl[329]";
-connectAttr "man_base_rigRN.phl[330]" "man_base_rigRN.phl[331]";
-connectAttr "man_base_rigRN.phl[332]" "man_base_rigRN.phl[333]";
-connectAttr "man_base_rigRN.phl[334]" "man_base_rigRN.phl[335]";
-connectAttr "man_base_rigRN.phl[336]" "man_base_rigRN.phl[337]";
-connectAttr "man_base_rigRN.phl[338]" "man_base_rigRN.phl[339]";
-connectAttr "man_base_rigRN.phl[340]" "man_base_rigRN.phl[341]";
-connectAttr "man_base_rigRN.phl[342]" "man_base_rigRN.phl[343]";
-connectAttr "man_base_rigRN.phl[344]" "man_base_rigRN.phl[345]";
-connectAttr "man_base_rigRN.phl[346]" "man_base_rigRN.phl[347]";
-connectAttr "man_base_rigRN.phl[348]" "man_base_rigRN.phl[349]";
-connectAttr "man_base_rigRN.phl[350]" "man_base_rigRN.phl[351]";
-connectAttr "man_base_rigRN.phl[352]" "man_base_rigRN.phl[353]";
-connectAttr "man_base_rigRN.phl[354]" "man_base_rigRN.phl[355]";
-connectAttr "man_base_rigRN.phl[356]" "man_base_rigRN.phl[357]";
-connectAttr "man_base_rigRN.phl[358]" "man_base_rigRN.phl[359]";
-connectAttr "man_base_rigRN.phl[360]" "man_base_rigRN.phl[361]";
-connectAttr "man_base_rigRN.phl[362]" "man_base_rigRN.phl[363]";
-connectAttr "man_base_rigRN.phl[364]" "man_base_rigRN.phl[365]";
-connectAttr "man_base_rigRN.phl[366]" "man_base_rigRN.phl[367]";
-connectAttr "man_base_rigRN.phl[368]" "man_base_rigRN.phl[369]";
-connectAttr "man_base_rigRN.phl[370]" "man_base_rigRN.phl[371]";
-connectAttr "man_base_rigRN.phl[372]" "man_base_rigRN.phl[373]";
-connectAttr "man_base_rigRN.phl[374]" "man_base_rigRN.phl[375]";
-connectAttr "man_base_rigRN.phl[376]" "man_base_rigRN.phl[377]";
-connectAttr "man_base_rigRN.phl[378]" "man_base_rigRN.phl[379]";
-connectAttr "man_base_rigRN.phl[380]" "man_base_rigRN.phl[381]";
-connectAttr "man_base_rigRN.phl[382]" "man_base_rigRN.phl[383]";
-connectAttr "man_base_rigRN.phl[384]" "man_base_rigRN.phl[385]";
-connectAttr "man_base_rigRN.phl[386]" "man_base_rigRN.phl[387]";
-connectAttr "man_base_rigRN.phl[388]" "man_base_rigRN.phl[389]";
-connectAttr "man_base_rigRN.phl[390]" "man_base_rigRN.phl[391]";
-connectAttr "man_base_rigRN.phl[392]" "man_base_rigRN.phl[393]";
-connectAttr "man_base_rigRN.phl[394]" "man_base_rigRN.phl[395]";
-connectAttr "man_base_rigRN.phl[396]" "man_base_rigRN.phl[397]";
-connectAttr "man_base_rigRN.phl[398]" "man_base_rigRN.phl[399]";
-connectAttr "man_base_rigRN.phl[400]" "HIKRetargeterNode2.InputCharacterDefinitionDst"
+connectAttr "man_base_rigRN.phl[202]" "GiantHand.dsm" -na;
+connectAttr "hand_r_scaleX_GiantHand.o" "man_base_rigRN.phl[203]";
+connectAttr "man_base_rigRN.phl[204]" "GiantHand.dsm" -na;
+connectAttr "hand_r_scaleY_GiantHand.o" "man_base_rigRN.phl[205]";
+connectAttr "man_base_rigRN.phl[206]" "GiantHand.dsm" -na;
+connectAttr "hand_r_scaleZ_GiantHand.o" "man_base_rigRN.phl[207]";
+connectAttr "man_base_rigRN.phl[208]" "GiantHand.dsm" -na;
+connectAttr "hand_r_translateX_GiantHand.o" "man_base_rigRN.phl[209]";
+connectAttr "man_base_rigRN.phl[210]" "GiantHand.dsm" -na;
+connectAttr "hand_r_translateY_GiantHand.o" "man_base_rigRN.phl[211]";
+connectAttr "man_base_rigRN.phl[212]" "GiantHand.dsm" -na;
+connectAttr "hand_r_translateZ_GiantHand.o" "man_base_rigRN.phl[213]";
+connectAttr "man_base_rigRN.phl[214]" "GiantHand.dsm" -na;
+connectAttr "hand_r_rotate_GiantHand.ox" "man_base_rigRN.phl[215]";
+connectAttr "man_base_rigRN.phl[216]" "GiantHand.dsm" -na;
+connectAttr "hand_r_rotate_GiantHand.oy" "man_base_rigRN.phl[217]";
+connectAttr "man_base_rigRN.phl[218]" "GiantHand.dsm" -na;
+connectAttr "hand_r_rotate_GiantHand.oz" "man_base_rigRN.phl[219]";
+connectAttr "man_base_rigRN.phl[220]" "hand_r_rotate_GiantHand.ro";
+connectAttr "man_base_rigRN.phl[221]" "man_base_rigRN.phl[222]";
+connectAttr "man_base_rigRN.phl[223]" "man_base_rigRN.phl[224]";
+connectAttr "man_base_rigRN.phl[225]" "man_base_rigRN.phl[226]";
+connectAttr "man_base_rigRN.phl[227]" "man_base_rigRN.phl[228]";
+connectAttr "man_base_rigRN.phl[229]" "man_base_rigRN.phl[230]";
+connectAttr "man_base_rigRN.phl[231]" "man_base_rigRN.phl[232]";
+connectAttr "man_base_rigRN.phl[233]" "man_base_rigRN.phl[234]";
+connectAttr "man_base_rigRN.phl[235]" "man_base_rigRN.phl[236]";
+connectAttr "man_base_rigRN.phl[237]" "man_base_rigRN.phl[238]";
+connectAttr "man_base_rigRN.phl[239]" "man_base_rigRN.phl[240]";
+connectAttr "man_base_rigRN.phl[241]" "man_base_rigRN.phl[242]";
+connectAttr "man_base_rigRN.phl[243]" "man_base_rigRN.phl[244]";
+connectAttr "man_base_rigRN.phl[245]" "man_base_rigRN.phl[246]";
+connectAttr "man_base_rigRN.phl[247]" "man_base_rigRN.phl[248]";
+connectAttr "man_base_rigRN.phl[249]" "man_base_rigRN.phl[250]";
+connectAttr "man_base_rigRN.phl[251]" "man_base_rigRN.phl[252]";
+connectAttr "man_base_rigRN.phl[253]" "man_base_rigRN.phl[254]";
+connectAttr "man_base_rigRN.phl[255]" "man_base_rigRN.phl[256]";
+connectAttr "man_base_rigRN.phl[257]" "man_base_rigRN.phl[258]";
+connectAttr "man_base_rigRN.phl[259]" "man_base_rigRN.phl[260]";
+connectAttr "man_base_rigRN.phl[261]" "man_base_rigRN.phl[262]";
+connectAttr "man_base_rigRN.phl[263]" "man_base_rigRN.phl[264]";
+connectAttr "man_base_rigRN.phl[265]" "man_base_rigRN.phl[266]";
+connectAttr "man_base_rigRN.phl[267]" "man_base_rigRN.phl[268]";
+connectAttr "man_base_rigRN.phl[269]" "man_base_rigRN.phl[270]";
+connectAttr "man_base_rigRN.phl[271]" "man_base_rigRN.phl[272]";
+connectAttr "man_base_rigRN.phl[273]" "man_base_rigRN.phl[274]";
+connectAttr "man_base_rigRN.phl[275]" "man_base_rigRN.phl[276]";
+connectAttr "man_base_rigRN.phl[277]" "man_base_rigRN.phl[278]";
+connectAttr "man_base_rigRN.phl[279]" "man_base_rigRN.phl[280]";
+connectAttr "man_base_rigRN.phl[281]" "man_base_rigRN.phl[282]";
+connectAttr "man_base_rigRN.phl[283]" "man_base_rigRN.phl[284]";
+connectAttr "man_base_rigRN.phl[285]" "man_base_rigRN.phl[286]";
+connectAttr "man_base_rigRN.phl[287]" "man_base_rigRN.phl[288]";
+connectAttr "man_base_rigRN.phl[289]" "man_base_rigRN.phl[290]";
+connectAttr "man_base_rigRN.phl[291]" "man_base_rigRN.phl[292]";
+connectAttr "man_base_rigRN.phl[293]" "man_base_rigRN.phl[294]";
+connectAttr "man_base_rigRN.phl[295]" "man_base_rigRN.phl[296]";
+connectAttr "man_base_rigRN.phl[297]" "man_base_rigRN.phl[298]";
+connectAttr "man_base_rigRN.phl[299]" "man_base_rigRN.phl[300]";
+connectAttr "man_base_rigRN.phl[301]" "man_base_rigRN.phl[302]";
+connectAttr "man_base_rigRN.phl[303]" "man_base_rigRN.phl[304]";
+connectAttr "man_base_rigRN.phl[305]" "man_base_rigRN.phl[306]";
+connectAttr "man_base_rigRN.phl[307]" "man_base_rigRN.phl[308]";
+connectAttr "man_base_rigRN.phl[309]" "man_base_rigRN.phl[310]";
+connectAttr "man_base_rigRN.phl[311]" "man_base_rigRN.phl[312]";
+connectAttr "man_base_rigRN.phl[313]" "man_base_rigRN.phl[314]";
+connectAttr "man_base_rigRN.phl[315]" "man_base_rigRN.phl[316]";
+connectAttr "man_base_rigRN.phl[317]" "man_base_rigRN.phl[318]";
+connectAttr "man_base_rigRN.phl[319]" "man_base_rigRN.phl[320]";
+connectAttr "man_base_rigRN.phl[321]" "man_base_rigRN.phl[322]";
+connectAttr "man_base_rigRN.phl[323]" "man_base_rigRN.phl[324]";
+connectAttr "man_base_rigRN.phl[325]" "man_base_rigRN.phl[326]";
+connectAttr "man_base_rigRN.phl[327]" "man_base_rigRN.phl[328]";
+connectAttr "man_base_rigRN.phl[329]" "man_base_rigRN.phl[330]";
+connectAttr "man_base_rigRN.phl[331]" "man_base_rigRN.phl[332]";
+connectAttr "man_base_rigRN.phl[333]" "man_base_rigRN.phl[334]";
+connectAttr "man_base_rigRN.phl[335]" "man_base_rigRN.phl[336]";
+connectAttr "man_base_rigRN.phl[337]" "man_base_rigRN.phl[338]";
+connectAttr "man_base_rigRN.phl[339]" "man_base_rigRN.phl[340]";
+connectAttr "man_base_rigRN.phl[341]" "man_base_rigRN.phl[342]";
+connectAttr "man_base_rigRN.phl[343]" "man_base_rigRN.phl[344]";
+connectAttr "man_base_rigRN.phl[345]" "man_base_rigRN.phl[346]";
+connectAttr "man_base_rigRN.phl[347]" "man_base_rigRN.phl[348]";
+connectAttr "man_base_rigRN.phl[349]" "man_base_rigRN.phl[350]";
+connectAttr "man_base_rigRN.phl[351]" "man_base_rigRN.phl[352]";
+connectAttr "man_base_rigRN.phl[353]" "man_base_rigRN.phl[354]";
+connectAttr "man_base_rigRN.phl[355]" "man_base_rigRN.phl[356]";
+connectAttr "man_base_rigRN.phl[357]" "man_base_rigRN.phl[358]";
+connectAttr "man_base_rigRN.phl[359]" "man_base_rigRN.phl[360]";
+connectAttr "man_base_rigRN.phl[361]" "man_base_rigRN.phl[362]";
+connectAttr "man_base_rigRN.phl[363]" "man_base_rigRN.phl[364]";
+connectAttr "man_base_rigRN.phl[365]" "man_base_rigRN.phl[366]";
+connectAttr "man_base_rigRN.phl[367]" "man_base_rigRN.phl[368]";
+connectAttr "man_base_rigRN.phl[369]" "man_base_rigRN.phl[370]";
+connectAttr "man_base_rigRN.phl[371]" "man_base_rigRN.phl[372]";
+connectAttr "man_base_rigRN.phl[373]" "man_base_rigRN.phl[374]";
+connectAttr "man_base_rigRN.phl[375]" "man_base_rigRN.phl[376]";
+connectAttr "man_base_rigRN.phl[377]" "man_base_rigRN.phl[378]";
+connectAttr "man_base_rigRN.phl[379]" "man_base_rigRN.phl[380]";
+connectAttr "man_base_rigRN.phl[381]" "man_base_rigRN.phl[382]";
+connectAttr "man_base_rigRN.phl[383]" "GiantHand.dsm" -na;
+connectAttr "foot_r_scaleX_GiantHand.o" "man_base_rigRN.phl[384]";
+connectAttr "man_base_rigRN.phl[385]" "GiantHand.dsm" -na;
+connectAttr "foot_r_scaleY_GiantHand.o" "man_base_rigRN.phl[386]";
+connectAttr "man_base_rigRN.phl[387]" "GiantHand.dsm" -na;
+connectAttr "foot_r_scaleZ_GiantHand.o" "man_base_rigRN.phl[388]";
+connectAttr "man_base_rigRN.phl[389]" "GiantHand.dsm" -na;
+connectAttr "foot_r_translateX_GiantHand.o" "man_base_rigRN.phl[390]";
+connectAttr "man_base_rigRN.phl[391]" "GiantHand.dsm" -na;
+connectAttr "foot_r_translateY_GiantHand.o" "man_base_rigRN.phl[392]";
+connectAttr "man_base_rigRN.phl[393]" "GiantHand.dsm" -na;
+connectAttr "foot_r_translateZ_GiantHand.o" "man_base_rigRN.phl[394]";
+connectAttr "man_base_rigRN.phl[395]" "GiantHand.dsm" -na;
+connectAttr "foot_r_rotate_GiantHand.ox" "man_base_rigRN.phl[396]";
+connectAttr "man_base_rigRN.phl[397]" "GiantHand.dsm" -na;
+connectAttr "foot_r_rotate_GiantHand.oy" "man_base_rigRN.phl[398]";
+connectAttr "man_base_rigRN.phl[399]" "GiantHand.dsm" -na;
+connectAttr "foot_r_rotate_GiantHand.oz" "man_base_rigRN.phl[400]";
+connectAttr "man_base_rigRN.phl[401]" "foot_r_rotate_GiantHand.ro";
+connectAttr "man_base_rigRN.phl[402]" "HIKRetargeterNode2.InputCharacterDefinitionDst"
 		;
-connectAttr "man_base_rigRN.phl[401]" "HIKRetargeterNode2.InputDstPropertySetState"
+connectAttr "man_base_rigRN.phl[403]" "HIKRetargeterNode2.InputDstPropertySetState"
 		;
-connectAttr "HIKRetargeterNode2.OutputCharacterState" "man_base_rigRN.phl[402]";
+connectAttr "man_base_rigRN.phl[404]" "hand_r_scaleX_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[405]" "hand_r_scaleY_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[406]" "hand_r_scaleZ_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[407]" "hand_r_translateX_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[408]" "hand_r_translateY_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[409]" "hand_r_translateZ_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[410]" "hand_r_rotate_GiantHand.iax";
+connectAttr "man_base_rigRN.phl[411]" "hand_r_rotate_GiantHand.iay";
+connectAttr "man_base_rigRN.phl[412]" "hand_r_rotate_GiantHand.iaz";
+connectAttr "man_base_rigRN.phl[413]" "foot_r_scaleX_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[414]" "foot_r_scaleY_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[415]" "foot_r_scaleZ_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[416]" "foot_r_translateX_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[417]" "foot_r_translateY_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[418]" "foot_r_translateZ_GiantHand.ia";
+connectAttr "man_base_rigRN.phl[419]" "foot_r_rotate_GiantHand.iax";
+connectAttr "man_base_rigRN.phl[420]" "foot_r_rotate_GiantHand.iay";
+connectAttr "man_base_rigRN.phl[421]" "foot_r_rotate_GiantHand.iaz";
+connectAttr "HIKRetargeterNode2.OutputCharacterState" "man_base_rigRN.phl[422]";
 connectAttr "Reference_visibility.o" "Reference.v";
 connectAttr "Reference_scaleX.o" "Reference.sx";
 connectAttr "Reference_scaleY.o" "Reference.sy";
@@ -6057,8 +6434,10 @@ connectAttr "HIKSK2State1.OutputCharacterState" "HIKRetargeterNode2.InputCharact
 		;
 connectAttr "AnimLayer1.sl" "BaseAnimation.chsl[0]";
 connectAttr "AnimLayer2.sl" "BaseAnimation.chsl[1]";
+connectAttr "GiantHand.sl" "BaseAnimation.chsl[3]";
 connectAttr "AnimLayer1.play" "BaseAnimation.cdly[0]";
 connectAttr "AnimLayer2.play" "BaseAnimation.cdly[1]";
+connectAttr "GiantHand.play" "BaseAnimation.cdly[3]";
 connectAttr "BaseAnimation.csol" "AnimLayer1.sslo";
 connectAttr "BaseAnimation.fgwt" "AnimLayer1.pwth";
 connectAttr "BaseAnimation.omte" "AnimLayer1.pmte";
@@ -6254,5 +6633,70 @@ connectAttr "AnimLayer2.fgwt" "Spine_filmboxTypeID_AnimLayer2.wb";
 connectAttr "Spine_filmboxTypeID.o" "Spine_filmboxTypeID_AnimLayer2.ia";
 connectAttr "Spine_filmboxTypeID_AnimLayer2_inputB.o" "Spine_filmboxTypeID_AnimLayer2.ib"
 		;
+connectAttr "BaseAnimation.csol" "GiantHand.sslo";
+connectAttr "BaseAnimation.fgwt" "GiantHand.pwth";
+connectAttr "BaseAnimation.omte" "GiantHand.pmte";
+connectAttr "foot_r_translateX_GiantHand.msg" "GiantHand.bnds[0]";
+connectAttr "foot_r_translateY_GiantHand.msg" "GiantHand.bnds[1]";
+connectAttr "foot_r_translateZ_GiantHand.msg" "GiantHand.bnds[2]";
+connectAttr "foot_r_rotate_GiantHand.msg" "GiantHand.bnds[6]";
+connectAttr "foot_r_scaleX_GiantHand.msg" "GiantHand.bnds[7]";
+connectAttr "foot_r_scaleY_GiantHand.msg" "GiantHand.bnds[8]";
+connectAttr "foot_r_scaleZ_GiantHand.msg" "GiantHand.bnds[9]";
+connectAttr "hand_r_translateX_GiantHand.msg" "GiantHand.bnds[10]";
+connectAttr "hand_r_translateY_GiantHand.msg" "GiantHand.bnds[11]";
+connectAttr "hand_r_translateZ_GiantHand.msg" "GiantHand.bnds[12]";
+connectAttr "hand_r_rotate_GiantHand.msg" "GiantHand.bnds[16]";
+connectAttr "hand_r_scaleX_GiantHand.msg" "GiantHand.bnds[17]";
+connectAttr "hand_r_scaleY_GiantHand.msg" "GiantHand.bnds[18]";
+connectAttr "hand_r_scaleZ_GiantHand.msg" "GiantHand.bnds[19]";
+connectAttr "GiantHand.bgwt" "foot_r_translateX_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "foot_r_translateX_GiantHand.wb";
+connectAttr "GiantHand.bgwt" "foot_r_translateY_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "foot_r_translateY_GiantHand.wb";
+connectAttr "GiantHand.bgwt" "foot_r_translateZ_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "foot_r_translateZ_GiantHand.wb";
+connectAttr "GiantHand.oram" "foot_r_rotate_GiantHand.acm";
+connectAttr "GiantHand.bgwt" "foot_r_rotate_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "foot_r_rotate_GiantHand.wb";
+connectAttr "GiantHand.sam" "foot_r_scaleX_GiantHand.acm";
+connectAttr "GiantHand.bgwt" "foot_r_scaleX_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "foot_r_scaleX_GiantHand.wb";
+connectAttr "GiantHand.sam" "foot_r_scaleY_GiantHand.acm";
+connectAttr "GiantHand.bgwt" "foot_r_scaleY_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "foot_r_scaleY_GiantHand.wb";
+connectAttr "GiantHand.sam" "foot_r_scaleZ_GiantHand.acm";
+connectAttr "GiantHand.bgwt" "foot_r_scaleZ_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "foot_r_scaleZ_GiantHand.wb";
+connectAttr "GiantHand.bgwt" "hand_r_translateX_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "hand_r_translateX_GiantHand.wb";
+connectAttr "hand_r_translateX_AnimLayer3_inputB.o" "hand_r_translateX_GiantHand.ib"
+		;
+connectAttr "GiantHand.bgwt" "hand_r_translateY_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "hand_r_translateY_GiantHand.wb";
+connectAttr "hand_r_translateY_AnimLayer3_inputB.o" "hand_r_translateY_GiantHand.ib"
+		;
+connectAttr "GiantHand.bgwt" "hand_r_translateZ_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "hand_r_translateZ_GiantHand.wb";
+connectAttr "hand_r_translateZ_AnimLayer3_inputB.o" "hand_r_translateZ_GiantHand.ib"
+		;
+connectAttr "GiantHand.oram" "hand_r_rotate_GiantHand.acm";
+connectAttr "GiantHand.bgwt" "hand_r_rotate_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "hand_r_rotate_GiantHand.wb";
+connectAttr "hand_r_rotate_AnimLayer3_inputBX.o" "hand_r_rotate_GiantHand.ibx";
+connectAttr "hand_r_rotate_AnimLayer3_inputBY.o" "hand_r_rotate_GiantHand.iby";
+connectAttr "hand_r_rotate_AnimLayer3_inputBZ.o" "hand_r_rotate_GiantHand.ibz";
+connectAttr "GiantHand.sam" "hand_r_scaleX_GiantHand.acm";
+connectAttr "GiantHand.bgwt" "hand_r_scaleX_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "hand_r_scaleX_GiantHand.wb";
+connectAttr "hand_r_scaleX_AnimLayer3_inputB.o" "hand_r_scaleX_GiantHand.ib";
+connectAttr "GiantHand.sam" "hand_r_scaleY_GiantHand.acm";
+connectAttr "GiantHand.bgwt" "hand_r_scaleY_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "hand_r_scaleY_GiantHand.wb";
+connectAttr "hand_r_scaleY_AnimLayer3_inputB.o" "hand_r_scaleY_GiantHand.ib";
+connectAttr "GiantHand.sam" "hand_r_scaleZ_GiantHand.acm";
+connectAttr "GiantHand.bgwt" "hand_r_scaleZ_GiantHand.wa";
+connectAttr "GiantHand.fgwt" "hand_r_scaleZ_GiantHand.wb";
+connectAttr "hand_r_scaleZ_AnimLayer3_inputB.o" "hand_r_scaleZ_GiantHand.ib";
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
-// End of man_base_walk_anim_working.0002.ma
+// End of man_base_walk_anim.ma
