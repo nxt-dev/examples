@@ -1,0 +1,89 @@
+{
+    "version": "1.17",
+    "alias": "sub_graph_demo",
+    "color": "#c91781",
+    "mute": false,
+    "solo": false,
+    "references": [
+        "$NXT_BUILTINS/sub_graphs.nxt"
+    ],
+    "meta_data": {
+        "colors": {
+            "$NXT_BUILTINS/sub_graphs.nxt": "#99cc33"
+        },
+        "positions": {
+            "/build_package": [
+                740.0,
+                -100.0
+            ],
+            "/get_version_num": [
+                400.0,
+                -100.0
+            ]
+        }
+    },
+    "nodes": {
+        "/": {
+            "code": [
+                "import os"
+            ]
+        },
+        "/build_package": {
+            "instance": "/_sub_graph",
+            "execute_in": "/get_version_num",
+            "child_order": [
+                "open_package_dir"
+            ],
+            "attrs": {
+                "_graph_path": {
+                    "value": "C:/Users/Lucas/Desktop/nxt_demo/packaging.nxt"
+                },
+                "output_dir": {}
+            }
+        },
+        "/build_package/open_package_dir": {
+            "code": [
+                "if os.path.isdir('${output_dir}'):",
+                "    os.startfile('${output_dir}')",
+                "else:",
+                "    raise IOError('Package output dir does not exist! \"${output_dir}\"')"
+            ]
+        },
+        "/get_version_num": {
+            "start_point": true,
+            "instance": "/_sub_graph",
+            "child_order": [
+                "check_version_num"
+            ],
+            "attrs": {
+                "_graph_path": {
+                    "value": "C:/Users/Lucas/Desktop/nxt_demo/get_version_numbers.nxt"
+                },
+                "_start": {
+                    "value": "/init"
+                },
+                "expected_version": {
+                    "type": "raw",
+                    "value": "0.8.1"
+                },
+                "repo": {
+                    "type": "raw",
+                    "value": "nxt"
+                },
+                "up_to_date": {
+                    "value": "False"
+                },
+                "version_key": {
+                    "type": "raw",
+                    "value": "API"
+                }
+            }
+        },
+        "/get_version_num/check_version_num": {
+            "code": [
+                "if not ${up_to_date}:",
+                "    raise Exception('Out of date!')"
+            ]
+        }
+    }
+}

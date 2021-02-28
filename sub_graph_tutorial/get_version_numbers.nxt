@@ -1,0 +1,120 @@
+{
+    "version": "1.17",
+    "alias": "get_version_numbers",
+    "color": "#f38b00",
+    "mute": false,
+    "solo": false,
+    "meta_data": {
+        "positions": {
+            "/api_version": [
+                360.0,
+                0.0
+            ],
+            "/check_versions": [
+                320.0,
+                -120.0
+            ],
+            "/editor_version": [
+                0.0,
+                0.0
+            ],
+            "/get_version": [
+                -20.0,
+                -120.0
+            ],
+            "/init": [
+                -340.0,
+                -120.0
+            ],
+            "/rest_get": [
+                -280.0,
+                120.0
+            ]
+        }
+    },
+    "nodes": {
+        "/": {
+            "attrs": {
+                "branch": {
+                    "comment": "Branch to get version from",
+                    "type": "raw",
+                    "value": "release"
+                },
+                "expected_version": {
+                    "comment": "Expected version num string",
+                    "type": "raw",
+                    "value": "0.0.0"
+                },
+                "repo": {
+                    "comment": "GitHub nxt-dev repo name",
+                    "type": "raw",
+                    "value": "some_repo"
+                },
+                "up_to_date": {
+                    "comment": "Set to true if determined expected matches version on GitHub",
+                    "type": "bool",
+                    "value": "False"
+                },
+                "url": {
+                    "comment": "URL to get raw github files",
+                    "type": "raw",
+                    "value": "https://raw.githubusercontent.com/nxt-dev/${repo}/${branch}/${version_json}"
+                },
+                "version_json": {
+                    "comment": "Version json file location relative to repo root",
+                    "type": "raw",
+                    "value": "${repo}/version.json"
+                },
+                "version_key": {
+                    "comment": "Key name of version dict",
+                    "type": "raw",
+                    "value": "EDITOR or API or GRAPH"
+                },
+                "version_str": {
+                    "comment": "Will be populated with version from GitHub",
+                    "type": "NoneType"
+                }
+            },
+            "code": [
+                "# Builtin",
+                "import urllib",
+                "import json"
+            ]
+        },
+        "/check_versions": {
+            "execute_in": "/get_version",
+            "code": [
+                "if '${expected_version}' == '${version_str}':",
+                "    print('You local ${version_key} version matches the version on GitHub.')",
+                "    STAGE.up_to_date = True",
+                "else:",
+                "    print('${expected_version}', '!=', '${version_str}')",
+                "    print('You local ${version_key} version does NOT match the version on GitHub!')"
+            ]
+        },
+        "/get_version": {
+            "execute_in": "/init",
+            "code": [
+                "text = urllib.urlopen('${url}').read()",
+                "version_dict = json.loads(text)",
+                "",
+                "STAGE.version_str = '.'.join([str(i) for i in version_dict['${version_key}'].values()])",
+                ""
+            ]
+        },
+        "/init": {
+            "code": [
+                "# Validate inputs are non-default",
+                "if '${expected_version}' == '0.0.0':",
+                "    raise ValueError('/.expected_version can not be ${expected_version}')",
+                "",
+                "if '${repo}' == 'some_repo':",
+                "    raise ValueError('/.repo can not be ${repo}')",
+                "    ",
+                "if '${version_key}' == 'VersionDictKey':",
+                "    raise ValueError('/.version_key can not be ${version_key}')",
+                ""
+            ]
+        }
+    }
+}
